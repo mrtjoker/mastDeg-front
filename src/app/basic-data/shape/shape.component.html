@@ -1,0 +1,31 @@
+<div class="page-body">
+    <app-card [title]="''" [classHeader]="true">
+        <div class="row">
+          <div class="col-sm-12">
+            <label class="dt-cust-search float-right">
+              <div class="form-group">
+                <label>Search: </label>
+                <input
+                  type='text'
+                  class="form-control input-sm m-l-10"
+                  placeholder='Search Name'
+                  (keyup)='updateFilter($event)'
+                />
+              </div>
+            </label>
+          </div>
+        </div>
+        <ngx-datatable
+          #table
+          class='data-table'
+          [columns]="columns"
+          [columnMode]="'force'"
+          [scrollbarH]="true"
+          [headerHeight]="50"
+          [footerHeight]="50"
+          [rowHeight]="50"
+          [limit]="10"
+          [rows]='rowsFilter'>
+        </ngx-datatable>
+      </app-card>
+</div>  
