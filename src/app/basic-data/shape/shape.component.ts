@@ -1,60 +1,33 @@
 import { Component, OnInit } from '@angular/core';
+import { ShapeService } from '../../shared/service/shape.service';
 
 @Component({
   selector: 'app-shape',
   templateUrl: './shape.component.html',
   styleUrls: ['./shape.component.scss',
-  '../../../assets/icon/icofont/css/icofont.scss']
+    '../../../assets/icon/icofont/css/icofont.scss']
 })
 export class ShapeComponent implements OnInit {
-  rowsBasic = [];
-  fullScreenRow = [];
-  loadingIndicator = true;
-  reorderable = true;
-
-  columns = [
-    { prop: 'name' },
-    { name: 'Gender' },
-    { name: 'Company' }
-  ];
-
-  rows = [];
-  expanded = {};
-  timeout: any;
-
-  rowsFilter = [];
-  tempFilter = [];
-  table: any;
-  constructor() {
-    this.fetchFilterData((data) => {
-      // cache our list
-      this.tempFilter = [...data];
-
-      // push our inital complete list
-      this.rowsFilter = data;
-    });
-  }
+  public rows = [{ name: 'วงกลม' }, { name: 'วงรี' }, { name: 'สี่เหลี่ยม' }];
+  public rowsFilter = [];
+  public tempFilter = [];
+  public table: any;
+  public val: string;
+  constructor(private shapeService: ShapeService) { }
 
   ngOnInit() {
+    this.tempFilter = [...this.rows];
+    this.rowsFilter = this.rows;
+    this.shapeService.getAllShape().subscribe((result) => {
+      console.log(result);
+    }); 
   }
-
-  fetchFilterData(cb) {
-    const req = new XMLHttpRequest();
-    req.open('GET', `assets/data/company.json`);
-
-    req.onload = () => {
-      cb(JSON.parse(req.response));
-    };
-
-    req.send();
-  }
-
 
   updateFilter(event) {
     const val = event.target.value.toLowerCase();
 
     // filter our data
-    const temp = this.tempFilter.filter(function(d) {
+    const temp = this.tempFilter.filter(function (d) {
       return d.name.toLowerCase().indexOf(val) !== -1 || !val;
     });
 
@@ -64,5 +37,9 @@ export class ShapeComponent implements OnInit {
     this.table.offset = 0;
   }
 
+  insert(){
+    this.shapeService.addShape(this.val).subscribe(() => {
+    });
+  }
 
 }

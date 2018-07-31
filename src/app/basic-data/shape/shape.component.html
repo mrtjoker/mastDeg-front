@@ -1,31 +1,42 @@
 <div class="page-body">
-    <app-card [title]="''" [classHeader]="true">
-        <div class="row">
-          <div class="col-sm-12">
-            <label class="dt-cust-search float-right">
-              <div class="form-group">
-                <label>Search: </label>
-                <input
-                  type='text'
-                  class="form-control input-sm m-l-10"
-                  placeholder='Search Name'
-                  (keyup)='updateFilter($event)'
-                />
-              </div>
-            </label>
+  <app-card [title]="''" [classHeader]="true">
+    <div class="row">
+      <div class="col-12 col-sm-6">
+        <div class="form-group row">
+          <h3 class="col-sm-2 col-form-label">เพิ่มข้อมูล:</h3>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" [(ngModel)]="val" (change)="insert()" placeholder="กรอกข้อมูล และกด Enter" >
           </div>
         </div>
-        <ngx-datatable
-          #table
-          class='data-table'
-          [columns]="columns"
-          [columnMode]="'force'"
-          [scrollbarH]="true"
-          [headerHeight]="50"
-          [footerHeight]="50"
-          [rowHeight]="50"
-          [limit]="10"
-          [rows]='rowsFilter'>
-        </ngx-datatable>
-      </app-card>
-</div>  
+      </div>
+      <div class='col-12 col-sm-6'>
+        <label class="dt-cust-search float-right">
+          <div class="form-group">
+            <label>ค้นหา: </label>
+            <input type='text' class="form-control input-sm m-l-10" placeholder='Search Name' (keyup)='updateFilter($event)' />
+          </div>
+        </label>
+      </div>
+    </div>
+    <div class="card">
+      <ngx-datatable #table class='data-table' [columnMode]="'force'" [scrollbarH]="true" [headerHeight]="50" [footerHeight]="50"
+        [rowHeight]="50" [limit]="10" [rows]='rowsFilter'>
+        <ngx-datatable-column name="ลำดับ" [maxWidth]="100">
+          <ng-template let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+            {{rowIndex + 1}}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="ลักษณะ">
+          <ng-template let-value="value" ngx-datatable-cell-template>
+            <p>{{value.name}}</p>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="ลบข้อมูล" [maxWidth]="100">
+          <ng-template let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+            x
+          </ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>
+    </div>
+  </app-card>
+</div>

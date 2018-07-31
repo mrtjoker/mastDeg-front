@@ -2,30 +2,9 @@
     <div class="row">
         <div class="col-sm-12 col-xl-4">
             <h4 class="sub-title">Tagging Support</h4>
-            <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [ngModel]="['Dolor']" [addOnBlur]="true" [clearOnBlur]="true">
+            <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="val" [addOnBlur]="true" [clearOnBlur]="true" (change)="insertVal()">
                 <tag-input-dropdown [autocompleteItems]="autocompleteItems"></tag-input-dropdown>
             </tag-input>
-            <p class="m-t-10">The select below is declared with the
-                <code>tag-input and tag-input-dropdown</code>
-            </p>
-        </div>
-        <div class="col-sm-12 col-xl-4">
-            <h4 class="sub-title">DIACRITICS SUPPORT</h4>
-            <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'Select Name +'" [ngModel]="[]" [onlyFromAutocomplete]="true">
-                <tag-input-dropdown [displayBy]="'value'" [identifyBy]="'id'" [autocompleteItems]="autocompleteItemsAsObjects"></tag-input-dropdown>
-            </tag-input>
-            <p class="m-t-10">The select below is declared with the tag-input
-                <code>onlyFromAutocomplete(true/false)</code>
-            </p>
-        </div>
-        <div class="col-sm-12 col-xl-4">
-            <h4 class="sub-title">RTL Support</h4>
-            <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [ngModel]="['Dolor']" [addOnBlur]="true" [clearOnBlur]="true">
-                <tag-input-dropdown [autocompleteItems]="autocompleteItems"></tag-input-dropdown>
-            </tag-input>
-            <p class="m-t-10">The select below is declared with the class
-                <code>.tag-input-rtl</code>
-            </p>
         </div>
     </div>
 </div>
