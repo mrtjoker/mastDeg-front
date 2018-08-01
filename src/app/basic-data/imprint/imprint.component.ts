@@ -7,7 +7,7 @@ import { mergeMap } from 'rxjs/operators';
   styleUrls: ['./shape.component.scss',
     '../../../assets/icon/icofont/css/icofont.scss']
 })
-export class ShapeComponent implements OnInit {
+export class ImprintComponent implements OnInit {
   public rowsFilter = [];
   public tempFilter = [];
   public table: any;
