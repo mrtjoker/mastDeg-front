@@ -42,12 +42,84 @@ const MENUITEMS = [
         icon: 'feather icon-menu',
         children: [
           {
+            state: 'adverseReactions',
+            name: 'อาการไม่พึงประสงค์'
+          },
+          {
+            state: 'advice',
+            name: 'คำแนะนำ'
+          },
+          {
+            state: 'brandName',
+            name: 'ชื่อการค้า'
+          },
+          {
+            state: 'color',
+            name: 'สี'
+          },
+          {
+            state: 'contraindications',
+            name: 'ข้อควรระวัง'
+          },
+          {
+            state: 'dosage',
+            name: 'ขนาดที่ให้'
+          },
+          {
             state: 'mims',
             name: 'MIMS Class'
           },
           {
+            state: 'factory',
+            name: 'บริษัท'
+          },
+          {
+            state: 'form',
+            name: 'รูปแบบ'
+          },
+          {
+            state: 'genericName',
+            name: 'ชื่อสามัญทางยา'
+          },
+          {
+            state: 'imprint',
+            name: 'imprint'
+          },
+          {
+            state: 'indications',
+            name: 'ข้อบ่งใช้'
+          },
+          {
+            state: 'interactions',
+            name: 'อันตรกิริยาระหว่างยา'
+          },
+          {
+            state: 'mims',
+            name: 'กลุ่มยาตาม MIMS Thailand'
+          },
+          {
+            state: 'presentation',
+            name: 'ขนาดความแรง'
+          },
+          {
+            state: 'presentationPack',
+            name: 'ขนาดความแรง & บรรจุภัณฑ์'
+          },
+          {
             state: 'shape',
-            name: 'Shape'
+            name: 'รูปร่าง'
+          },
+          {
+            state: 'thaiFDA',
+            name: 'Thailand FDA'
+          },
+          {
+            state: 'usFDA',
+            name: 'US FDA'
+          },
+          {
+            state: 'warning',
+            name: 'คำเตือน'
           },
         ]
       },

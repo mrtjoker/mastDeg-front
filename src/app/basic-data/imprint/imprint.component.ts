@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ShapeService } from '../../shared/service/shape.service';
+import { ImprintService } from '../../shared/service/imprint.service';
 import { mergeMap } from 'rxjs/operators';
 @Component({
-  selector: 'app-shape',
-  templateUrl: './shape.component.html',
-  styleUrls: ['./shape.component.scss',
+  selector: 'app-imprint',
+  templateUrl: './imprint.component.html',
+  styleUrls: ['./imprint.component.scss',
     '../../../assets/icon/icofont/css/icofont.scss']
 })
 export class ImprintComponent implements OnInit {
@@ -14,10 +14,10 @@ export class ImprintComponent implements OnInit {
   public value: string;
   public tmp = {};
   
-  constructor(private shapeService: ShapeService) { }
+  constructor(private imprintService: ImprintService) { }
 
   ngOnInit() {
-    this.shapeService.getAllShape().subscribe((results) => {
+    this.imprintService.getAllImprint().subscribe((results) => {
       this.tempFilter = [...results];
       this.rowsFilter = results;
     });
@@ -26,17 +26,17 @@ export class ImprintComponent implements OnInit {
   updateFilter(event) {
     const val = event.target.value.toLowerCase();
     const temp = this.tempFilter.filter(function (d) {
-      return d.shapeName.toLowerCase().indexOf(val) !== -1 || !val;
+      return d.imprintName.toLowerCase().indexOf(val) !== -1 || !val;
     });
     this.rowsFilter = temp;
     this.table.offset = 0;
   }
 
   insert() {
-    this.tmp = { shapeName: this.value };
+    this.tmp = { imprintName: this.value };
     this.value = '';
-    this.shapeService.addShape(this.tmp).pipe(
-      mergeMap(() => this.shapeService.getAllShape()))
+    this.imprintService.addImprint(this.tmp).pipe(
+      mergeMap(() => this.imprintService.getAllImprint()))
       .subscribe((results) => {
         this.tempFilter = [...results];
         this.rowsFilter = results;
@@ -44,8 +44,8 @@ export class ImprintComponent implements OnInit {
   }
 
   update(value) {
-    this.shapeService.updateShape(value._id, value).pipe(
-      mergeMap(() => this.shapeService.getAllShape()))
+    this.imprintService.updateImprint(value._id, value).pipe(
+      mergeMap(() => this.imprintService.getAllImprint()))
       .subscribe((results) => {
         this.tempFilter = [...results];
         this.rowsFilter = results;
@@ -53,8 +53,8 @@ export class ImprintComponent implements OnInit {
   }
 
   delete(value) {
-    this.shapeService.deleteShape(value._id).pipe(
-      mergeMap(() => this.shapeService.getAllShape()))
+    this.imprintService.deleteImprint(value._id).pipe(
+      mergeMap(() => this.imprintService.getAllImprint()))
       .subscribe((results) => {
         this.tempFilter = [...results];
         this.rowsFilter = results;

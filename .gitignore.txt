@@ -6,7 +6,8 @@
 /out-tsc
 .scannerwork
 # dependencies
-/node_modules
+database
+node_modules
 
 # IDEs and editors
 /.idea

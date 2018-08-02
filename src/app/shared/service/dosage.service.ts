@@ -1,30 +1,29 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { ApiService } from './api.service';
-import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 @Injectable()
 
-export class ShapeService {
+export class DosageService {
 
     constructor(
         private apiService: ApiService
     ) { }
 
-    getAllShape(): Observable<any> {
-        return this.apiService.get(`shape`);
+    getAllDosage(): Observable<any> {
+        return this.apiService.get(`dosage`);
     }
 
-    addShape(data): Observable<any> {
+    addDosage(data): Observable<any> {
         console.log(data)
-        return this.apiService.post('shape', data);
+        return this.apiService.post('dosage', data);
     }
 
-    updateShape(id: string, data): Observable<any> {
-        return this.apiService.put('shape/' + id, data);
+    updateDosage(id: string, data): Observable<any> {
+        return this.apiService.put('dosage/' + id, data);
     }
 
-    deleteShape(id: string): Observable<any> {
-        return this.apiService.delete('shape/' + id);
+    deleteDosage(id: string): Observable<any> {
+        return this.apiService.delete('dosage/' + id);
     }
     
 }

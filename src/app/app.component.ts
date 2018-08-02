@@ -7,7 +7,7 @@ import {NavigationEnd, Router} from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'Able Pro 7 6';
+  title = 'Medicines Search';
 
   constructor(private router: Router) { }
 
