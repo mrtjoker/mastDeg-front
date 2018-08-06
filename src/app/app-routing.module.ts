@@ -19,6 +19,10 @@ const routes: Routes = [
         loadChildren: './basic-data/basic-data.module#BasicDataModule'
       },
       {
+        path: 'medicines',
+        loadChildren: './medicines/medicines.module#MedicinesModule'
+      },
+      {
         path: 'dashboard',
         loadChildren: './theme/dashboard/dashboard.module#DashboardModule'
       },

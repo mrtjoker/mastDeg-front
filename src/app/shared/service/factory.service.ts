@@ -14,7 +14,6 @@ export class FactoryService {
     }
 
     addFactory(data): Observable<any> {
-        console.log(data)
         return this.apiService.post('factory', data);
     }
 

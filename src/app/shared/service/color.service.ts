@@ -14,7 +14,6 @@ export class ColorService {
     }
 
     addColor(data): Observable<any> {
-        console.log(data)
         return this.apiService.post('color', data);
     }
 

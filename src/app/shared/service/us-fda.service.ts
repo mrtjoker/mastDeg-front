@@ -14,7 +14,6 @@ export class UsFDAService {
     }
 
     addUsFDA(data): Observable<any> {
-        console.log(data)
         return this.apiService.post('us-fda', data);
     }
 

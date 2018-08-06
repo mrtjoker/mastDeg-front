@@ -26,14 +26,14 @@ export class AdviceComponent implements OnInit {
   updateFilter(event) {
     const val = event.target.value.toLowerCase();
     const temp = this.tempFilter.filter(function (d) {
-      return d.adviceName.toLowerCase().indexOf(val) !== -1 || !val;
+      return d.advice.toLowerCase().indexOf(val) !== -1 || !val;
     });
     this.rowsFilter = temp;
     this.table.offset = 0;
   }
 
   insert() {
-    this.tmp = { adviceName: this.value };
+    this.tmp = { advice: this.value };
     this.value = '';
     this.adviceService.addAdvice(this.tmp).pipe(
       mergeMap(() => this.adviceService.getAllAdvice()))

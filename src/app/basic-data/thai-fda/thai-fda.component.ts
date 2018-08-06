@@ -11,30 +11,49 @@ export class ThaiFDAComponent implements OnInit {
   public rowsFilter = [];
   public tempFilter = [];
   public table: any;
-  public value: string;
-  public tmp = {};
-  
+  public value = {
+    initialThaiFDA: '',
+    thaiFDATH: '',
+    thaiFDAEN: ''
+  };
+  public tmp = {
+    initialThaiFDA: '',
+    thaiFDATH: '',
+    thaiFDAEN: ''
+  };
+
   constructor(private thaiFDAService: ThaiFDAService) { }
 
   ngOnInit() {
     this.thaiFDAService.getAllThaiFDA().subscribe((results) => {
       this.tempFilter = [...results];
       this.rowsFilter = results;
+      console.log(results);
     });
   }
 
   updateFilter(event) {
     const val = event.target.value.toLowerCase();
     const temp = this.tempFilter.filter(function (d) {
-      return d.thaiFDAName.toLowerCase().indexOf(val) !== -1 || !val;
+      return d.initialThaiFDA.toLowerCase().indexOf(val) !== -1 ||
+        d.thaiFDATH.toLowerCase().indexOf(val) !== -1 ||
+        d.thaiFDAEN.toLowerCase().indexOf(val) !== -1 || !val;
     });
     this.rowsFilter = temp;
     this.table.offset = 0;
   }
 
   insert() {
-    this.tmp = { thaiFDAName: this.value };
-    this.value = '';
+    this.tmp = {
+      initialThaiFDA: this.value.initialThaiFDA,
+      thaiFDATH: this.value.thaiFDATH,
+      thaiFDAEN: this.value.thaiFDAEN
+    };
+    this.value = {
+      initialThaiFDA: '',
+      thaiFDATH: '',
+      thaiFDAEN: ''
+    };
     this.thaiFDAService.addThaiFDA(this.tmp).pipe(
       mergeMap(() => this.thaiFDAService.getAllThaiFDA()))
       .subscribe((results) => {

@@ -15,7 +15,6 @@ export class ShapeService {
     }
 
     addShape(data): Observable<any> {
-        console.log(data)
         return this.apiService.post('shape', data);
     }
 

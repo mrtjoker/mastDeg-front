@@ -14,7 +14,6 @@ export class AdverseReactionsService {
     }
 
     addAdverseReactions(data): Observable<any> {
-        console.log(data)
         return this.apiService.post('adverse-reactions', data);
     }
 

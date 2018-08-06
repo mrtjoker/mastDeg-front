@@ -14,7 +14,6 @@ export class ImprintService {
     }
 
     addImprint(data): Observable<any> {
-        console.log(data)
         return this.apiService.post('imprint', data);
     }
 

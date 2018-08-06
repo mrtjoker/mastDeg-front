@@ -14,7 +14,6 @@ export class IndicationsService {
     }
 
     addIndications(data): Observable<any> {
-        console.log(data)
         return this.apiService.post('indications', data);
     }
 

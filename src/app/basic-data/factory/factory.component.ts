@@ -26,14 +26,14 @@ export class FactoryComponent implements OnInit {
   updateFilter(event) {
     const val = event.target.value.toLowerCase();
     const temp = this.tempFilter.filter(function (d) {
-      return d.factoryName.toLowerCase().indexOf(val) !== -1 || !val;
+      return d.factory.toLowerCase().indexOf(val) !== -1 || !val;
     });
     this.rowsFilter = temp;
     this.table.offset = 0;
   }
 
   insert() {
-    this.tmp = { factoryName: this.value };
+    this.tmp = { factory: this.value };
     this.value = '';
     this.factoryService.addFactory(this.tmp).pipe(
       mergeMap(() => this.factoryService.getAllFactory()))

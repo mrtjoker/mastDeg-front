@@ -26,14 +26,14 @@ export class DosageComponent implements OnInit {
   updateFilter(event) {
     const val = event.target.value.toLowerCase();
     const temp = this.tempFilter.filter(function (d) {
-      return d.dosageName.toLowerCase().indexOf(val) !== -1 || !val;
+      return d.dosage.toLowerCase().indexOf(val) !== -1 || !val;
     });
     this.rowsFilter = temp;
     this.table.offset = 0;
   }
 
   insert() {
-    this.tmp = { dosageName: this.value };
+    this.tmp = { dosage: this.value };
     this.value = '';
     this.dosageService.addDosage(this.tmp).pipe(
       mergeMap(() => this.dosageService.getAllDosage()))

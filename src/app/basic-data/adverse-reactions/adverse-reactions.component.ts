@@ -26,14 +26,14 @@ export class AdverseReactionsComponent implements OnInit {
   updateFilter(event) {
     const val = event.target.value.toLowerCase();
     const temp = this.tempFilter.filter(function (d) {
-      return d.adverseReactionsName.toLowerCase().indexOf(val) !== -1 || !val;
+      return d.adverseReactions.toLowerCase().indexOf(val) !== -1 || !val;
     });
     this.rowsFilter = temp;
     this.table.offset = 0;
   }
 
   insert() {
-    this.tmp = { adverseReactionsName: this.value };
+    this.tmp = { adverseReactions: this.value };
     this.value = '';
     this.adverseReactionsService.addAdverseReactions(this.tmp).pipe(
       mergeMap(() => this.adverseReactionsService.getAllAdverseReactions()))

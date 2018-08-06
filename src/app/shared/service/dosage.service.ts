@@ -14,7 +14,6 @@ export class DosageService {
     }
 
     addDosage(data): Observable<any> {
-        console.log(data)
         return this.apiService.post('dosage', data);
     }
 

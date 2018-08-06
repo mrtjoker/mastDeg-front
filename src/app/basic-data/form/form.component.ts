@@ -26,14 +26,14 @@ export class FormComponent implements OnInit {
   updateFilter(event) {
     const val = event.target.value.toLowerCase();
     const temp = this.tempFilter.filter(function (d) {
-      return d.formName.toLowerCase().indexOf(val) !== -1 || !val;
+      return d.form.toLowerCase().indexOf(val) !== -1 || !val;
     });
     this.rowsFilter = temp;
     this.table.offset = 0;
   }
 
   insert() {
-    this.tmp = { formName: this.value };
+    this.tmp = { form: this.value };
     this.value = '';
     this.formService.addForm(this.tmp).pipe(
       mergeMap(() => this.formService.getAllForm()))

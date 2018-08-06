@@ -14,7 +14,6 @@ export class InteractionsService {
     }
 
     addInteractions(data): Observable<any> {
-        console.log(data)
         return this.apiService.post('interactions', data);
     }
 

@@ -26,14 +26,14 @@ export class UsFDAComponent implements OnInit {
   updateFilter(event) {
     const val = event.target.value.toLowerCase();
     const temp = this.tempFilter.filter(function (d) {
-      return d.usFDAName.toLowerCase().indexOf(val) !== -1 || !val;
+      return d.usFDA.toLowerCase().indexOf(val) !== -1 || !val;
     });
     this.rowsFilter = temp;
     this.table.offset = 0;
   }
 
   insert() {
-    this.tmp = { usFDAName: this.value };
+    this.tmp = { usFDA: this.value };
     this.value = '';
     this.usFDAService.addUsFDA(this.tmp).pipe(
       mergeMap(() => this.usFDAService.getAllUsFDA()))

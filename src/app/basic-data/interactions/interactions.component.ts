@@ -26,14 +26,14 @@ export class InteractionsComponent implements OnInit {
   updateFilter(event) {
     const val = event.target.value.toLowerCase();
     const temp = this.tempFilter.filter(function (d) {
-      return d.interactionsName.toLowerCase().indexOf(val) !== -1 || !val;
+      return d.interactions.toLowerCase().indexOf(val) !== -1 || !val;
     });
     this.rowsFilter = temp;
     this.table.offset = 0;
   }
 
   insert() {
-    this.tmp = { interactionsName: this.value };
+    this.tmp = { interactions: this.value };
     this.value = '';
     this.interactionsService.addInteractions(this.tmp).pipe(
       mergeMap(() => this.interactionsService.getAllInteractions()))

@@ -26,14 +26,14 @@ export class ImprintComponent implements OnInit {
   updateFilter(event) {
     const val = event.target.value.toLowerCase();
     const temp = this.tempFilter.filter(function (d) {
-      return d.imprintName.toLowerCase().indexOf(val) !== -1 || !val;
+      return d.imprint.toLowerCase().indexOf(val) !== -1 || !val;
     });
     this.rowsFilter = temp;
     this.table.offset = 0;
   }
 
   insert() {
-    this.tmp = { imprintName: this.value };
+    this.tmp = { imprint: this.value };
     this.value = '';
     this.imprintService.addImprint(this.tmp).pipe(
       mergeMap(() => this.imprintService.getAllImprint()))

@@ -14,7 +14,6 @@ export class ThaiFDAService {
     }
 
     addThaiFDA(data): Observable<any> {
-        console.log(data)
         return this.apiService.post('thai-fda', data);
     }
 

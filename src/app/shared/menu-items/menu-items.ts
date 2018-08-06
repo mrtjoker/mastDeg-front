@@ -36,7 +36,7 @@ const MENUITEMS = [
     main: [
       {
         state: 'basic-data',
-        short_label: 'D',
+        short_label: 'B',
         name: 'ข้อมูลพื้นฐาน',
         type: 'sub',
         icon: 'feather icon-menu',
@@ -63,11 +63,7 @@ const MENUITEMS = [
           },
           {
             state: 'dosage',
-            name: 'ขนาดที่ให้'
-          },
-          {
-            state: 'mims',
-            name: 'MIMS Class'
+            name: 'ปริมาณที่ให้'
           },
           {
             state: 'factory',
@@ -103,7 +99,7 @@ const MENUITEMS = [
           },
           {
             state: 'presentationPack',
-            name: 'ขนาดความแรง & บรรจุภัณฑ์'
+            name: 'ขนาดความแรงต่อบรรจุภัณฑ์'
           },
           {
             state: 'shape',
@@ -123,6 +119,13 @@ const MENUITEMS = [
           },
         ]
       },
+      {
+        state: 'medicines',
+        short_label: 'M',
+        name: 'ข้อมูลยา',
+        type: 'link',
+        icon: 'feather icon-aperture rotate-refresh'
+      }
     ],
   },
   {

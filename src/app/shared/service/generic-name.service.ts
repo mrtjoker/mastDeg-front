@@ -14,7 +14,6 @@ export class GenericNameService {
     }
 
     addGenericName(data): Observable<any> {
-        console.log(data)
         return this.apiService.post('generic-name', data);
     }
 

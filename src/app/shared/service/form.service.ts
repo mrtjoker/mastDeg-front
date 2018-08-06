@@ -14,7 +14,6 @@ export class FormService {
     }
 
     addForm(data): Observable<any> {
-        console.log(data)
         return this.apiService.post('form', data);
     }
 

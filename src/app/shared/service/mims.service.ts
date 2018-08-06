@@ -14,7 +14,6 @@ export class MimsService {
     }
 
     addMims(data): Observable<any> {
-        console.log(data)
         return this.apiService.post('mims', data);
     }
 

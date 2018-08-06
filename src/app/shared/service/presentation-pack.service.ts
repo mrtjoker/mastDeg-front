@@ -14,7 +14,6 @@ export class PresentationPackService {
     }
 
     addPresentationPack(data): Observable<any> {
-        console.log(data)
         return this.apiService.post('presentation-pack', data);
     }
 

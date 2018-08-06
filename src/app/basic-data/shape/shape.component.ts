@@ -26,14 +26,14 @@ export class ShapeComponent implements OnInit {
   updateFilter(event) {
     const val = event.target.value.toLowerCase();
     const temp = this.tempFilter.filter(function (d) {
-      return d.shapeName.toLowerCase().indexOf(val) !== -1 || !val;
+      return d.shape.toLowerCase().indexOf(val) !== -1 || !val;
     });
     this.rowsFilter = temp;
     this.table.offset = 0;
   }
 
   insert() {
-    this.tmp = { shapeName: this.value };
+    this.tmp = { shape: this.value };
     this.value = '';
     this.shapeService.addShape(this.tmp).pipe(
       mergeMap(() => this.shapeService.getAllShape()))

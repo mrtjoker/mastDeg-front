@@ -14,7 +14,6 @@ export class AdviceService {
     }
 
     addAdvice(data): Observable<any> {
-        console.log(data)
         return this.apiService.post('advice', data);
     }
 

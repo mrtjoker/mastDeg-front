@@ -1,11 +1,14 @@
 <div class="page-body">
-  <app-card [title]="'รูปร่างลักษณะของเม็ดยา'" [classHeader]="true">
+  <app-card [title]="'Thailand FDA'" [classHeader]="true">
     <div class="row">
       <div class="col-12 col-sm-6">
         <div class="form-group row">
           <div class="col-sm-8">
-            <input type="text" class="form-control" [(ngModel)]="value" (change)="insert()" placeholder="เพิ่มข้อมูล">
-            <code>กรอกข้อมูลในช่องด้านบน และกดปุ่ม Enter เพื่อเพิ่มข้อมูล</code>
+            <input type="text" class="form-control" [(ngModel)]="value.initialThaiFDA" placeholder="ชื่อย่อ">
+            <input type="text" class="form-control" [(ngModel)]="value.thaiFDAEN" placeholder="ชื่อภาษาอังกฤษ">
+            <input type="text" class="form-control" [(ngModel)]="value.thaiFDATH" placeholder="ชื่อภาษาไทย">
+            <button (click)="insert()">เพิ่ม</button>
+            <code>กรอกข้อมูลในช่องด้านบน และกดปุ่ม "เพิ่ม" เพื่อเพิ่มข้อมูล</code>
           </div>
         </div>
       </div>
@@ -20,16 +23,30 @@
     <div class="card-block">
       <ngx-datatable #table class='data-table' [columnMode]="'force'" [scrollbarH]="true" [headerHeight]="50" [footerHeight]="50"
         [rowHeight]="50" [limit]="10" [rows]='rowsFilter' [reorderable]="true">
-        <ngx-datatable-column name="ข้อมูลรูปร่างลักษณะของเม็ดยา">
-          <ng-template let-value="value" ngx-datatable-cell-template>
+        <ngx-datatable-column name="Thailand FDA(ตัวย่อ)">
+          <ng-template let-row="row" ngx-datatable-cell-template>
             <form class="form-material" action="javascript:">
-              <input type="text" name="shapeName" class="form-control" [(ngModel)]="value.shapeName" (change)="update(value)">
+              <input type="text" name="initialThaiFDA" class="form-control" [(ngModel)]="row.initialThaiFDA" (change)="update(row)">
+            </form>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Thailand FDA(อังกฤษ)">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <form class="form-material" action="javascript:">
+              <input type="text" name="thaiFDAEN" class="form-control" [(ngModel)]="row.thaiFDAEN" (change)="update(row)">
+            </form>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Thailand FDA(ไทย)">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <form class="form-material" action="javascript:">
+              <input type="text" name="thaiFDATH" class="form-control" [(ngModel)]="row.thaiFDATH" (change)="update(row)">
             </form>
           </ng-template>
         </ngx-datatable-column>
         <ngx-datatable-column name="ลบข้อมูล" [maxWidth]="100">
-          <ng-template let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
-            <a href="javascript:;" class="crm-action-delete text-danger" (click)="delete(value)">
+          <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
+            <a href="javascript:;" class="crm-action-delete text-danger" (click)="delete(row)">
               <i class="fa fa-trash"></i>
             </a>
           </ng-template>

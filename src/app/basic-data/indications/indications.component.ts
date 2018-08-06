@@ -26,14 +26,14 @@ export class IndicationsComponent implements OnInit {
   updateFilter(event) {
     const val = event.target.value.toLowerCase();
     const temp = this.tempFilter.filter(function (d) {
-      return d.indicationsName.toLowerCase().indexOf(val) !== -1 || !val;
+      return d.indications.toLowerCase().indexOf(val) !== -1 || !val;
     });
     this.rowsFilter = temp;
     this.table.offset = 0;
   }
 
   insert() {
-    this.tmp = { indicationsName: this.value };
+    this.tmp = { indications: this.value };
     this.value = '';
     this.indicationsService.addIndications(this.tmp).pipe(
       mergeMap(() => this.indicationsService.getAllIndications()))

@@ -26,14 +26,14 @@ export class PresentationComponent implements OnInit {
   updateFilter(event) {
     const val = event.target.value.toLowerCase();
     const temp = this.tempFilter.filter(function (d) {
-      return d.presentationName.toLowerCase().indexOf(val) !== -1 || !val;
+      return d.presentation.toLowerCase().indexOf(val) !== -1 || !val;
     });
     this.rowsFilter = temp;
     this.table.offset = 0;
   }
 
   insert() {
-    this.tmp = { presentationName: this.value };
+    this.tmp = { presentation: this.value };
     this.value = '';
     this.presentationService.addPresentation(this.tmp).pipe(
       mergeMap(() => this.presentationService.getAllPresentation()))

@@ -14,7 +14,6 @@ export class BrandNameService {
     }
 
     addBrandName(data): Observable<any> {
-        console.log(data)
         return this.apiService.post('brand-name', data);
     }
 

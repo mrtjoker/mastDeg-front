@@ -26,14 +26,14 @@ export class PresentationPackComponent implements OnInit {
   updateFilter(event) {
     const val = event.target.value.toLowerCase();
     const temp = this.tempFilter.filter(function (d) {
-      return d.presentationPackName.toLowerCase().indexOf(val) !== -1 || !val;
+      return d.presentationPack.toLowerCase().indexOf(val) !== -1 || !val;
     });
     this.rowsFilter = temp;
     this.table.offset = 0;
   }
 
   insert() {
-    this.tmp = { presentationPackName: this.value };
+    this.tmp = { presentationPack: this.value };
     this.value = '';
     this.presentationPackService.addPresentationPack(this.tmp).pipe(
       mergeMap(() => this.presentationPackService.getAllPresentationPack()))

@@ -26,14 +26,14 @@ export class ColorComponent implements OnInit {
   updateFilter(event) {
     const val = event.target.value.toLowerCase();
     const temp = this.tempFilter.filter(function (d) {
-      return d.colorName.toLowerCase().indexOf(val) !== -1 || !val;
+      return d.color.toLowerCase().indexOf(val) !== -1 || !val;
     });
     this.rowsFilter = temp;
     this.table.offset = 0;
   }
 
   insert() {
-    this.tmp = { colorName: this.value };
+    this.tmp = { color: this.value };
     this.value = '';
     this.colorService.addColor(this.tmp).pipe(
       mergeMap(() => this.colorService.getAllColor()))
