@@ -1,28 +1,96 @@
 <div class="card">
-    <div class="card-header">
-        <h5>Contact</h5>
-        <button type="button" class="btn btn-primary waves-effect waves-light f-right d-inline-block md-trigger" (click)="openMyModal('effect-13')">
-            <i class="icofont icofont-plus m-r-5"></i> Add Contact
-        </button>
+    <div class="row">
+        <div class="col-sm-12 col-xl-4">
+            <h4 class="sub-title">Tagging Support</h4>
+            <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="val" [addOnBlur]="true" [clearOnBlur]="true" (change)="insertVal()">
+                <tag-input-dropdown [autocompleteItems]="autocompleteItems"></tag-input-dropdown>
+            </tag-input>
+        </div>
     </div>
 </div>
+<div class="card">
+    <div class="card-header row">
+        <div class="col-12 col-sm-6">
+            <button type="button" class="btn btn-primary waves-effect waves-light f-right d-inline-block md-trigger" (click)="openMyModal('effect-13')">
+                <i class="icofont icofont-plus m-r-5"></i> เพิ่มยา
+            </button>
+        </div>
+        <div class="col-12 col-sm-6">
+            <label class="dt-cust-search float-right">
+                <div class="form-group">
+                    <input type='text' class="form-control input-sm m-l-10" placeholder='ค้นหา' (keyup)='updateFilter($event)' />
+                </div>
+            </label>
+        </div>
+    </div>
+    <div class="card-block">
+        <ngx-datatable #table class='data-table' [columnMode]="'force'" [scrollbarH]="true" [headerHeight]="50" [footerHeight]="50"
+            [rowHeight]="50" [limit]="10" [rows]='rowsFilter' [reorderable]="true">
+            <ngx-datatable-column name="กลุ่มยาตาม MIMS Thailand">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <form class="form-material" action="javascript:">
+                        <input type="text" name="mimsClass" class="form-control" [(ngModel)]="row.mimsClass" (change)="update(row)">
+                    </form>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="ลบข้อมูล" [maxWidth]="100">
+                <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
+                    <a href="javascript:;" class="crm-action-delete text-danger" (click)="delete(row)">
+                        <i class="fa fa-trash"></i>
+                    </a>
+                </ng-template>
+            </ngx-datatable-column>
+        </ngx-datatable>
+    </div>
+</div>
+
 <app-modal-animation [modalID]="'effect-13'" [modalClass]="'md-effect-13'">
     <h3 class="f-26">Add Contact</h3>
-    <div class="text-center">
-        <div class="input-group">
-            <div class="card">
-                <div class="row">
-                    <div class="col-sm-12 col-xl-4">
-                        <h4 class="sub-title">Tagging Support</h4>
-                        <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="val" [addOnBlur]="true" [clearOnBlur]="true"
-                            (change)="insertVal()">
-                            <tag-input-dropdown [autocompleteItems]="autocompleteItems"></tag-input-dropdown>
-                        </tag-input>
-                    </div>
-                </div>
+    <div class="text-center row">
+        <div class="col-12 col-sm-4">
+            <div class="input-group">
+                <span class="input-group-prepend" id="basic-addon1">
+                    <label class="input-group-text">
+                        <i class="icofont icofont-user"></i>
+                    </label>
+                </span>
+                <input type="text" name="name" class="form-control" [(ngModel)]="tmp.name">
+            </div>
+        </div>
+        <div class="col-12 col-sm-4">
+            <div class="input-group">
+                <!-- <span class="input-group-prepend" id="basic-addon2">
+                    <label class="input-group-text">
+                        <i class="icofont icofont-user"></i>
+                    </label>
+                </span> -->
+                <input type="text" class="form-control" placeholder="Email">
+            </div>
+        </div>
+        <div class="col-12 col-sm-4">
+            <div class="input-group">
+                <span class="input-group-prepend" id="basic-addon2">
+                    <label class="input-group-text">
+                        <i class="icofont icofont-user"></i>
+                    </label>
+                </span>
+                <input type="text" class="form-control" placeholder="Email">
             </div>
         </div>
         <div class="input-group">
+            <span class="input-group-prepend" id="basic-addon2">
+                <label class="input-group-text">
+                    <i class="icofont icofont-user"></i>
+                </label>
+            </span>
+            <input type="text" class="form-control" placeholder="Email">
+        </div>
+        <div class="input-group">
+            <span class="input-group-prepend" id="basic-addon2">
+                <label class="input-group-text">
+                    <i class="icofont icofont-user"></i>
+                </label>
+            </span>
             <input type="text" class="form-control" placeholder="Email">
         </div>
         <div class="input-group">
@@ -65,7 +133,7 @@
             </span>
             <input id="dropper-default" class="form-control" type="text" placeholder="Select Your Birth Date" readonly="readonly">
         </div>
-        <button type="button" class="btn btn-primary waves-effect m-r-20 f-w-600 d-inline-block">Save</button>
+        <button type="button" class="btn btn-primary waves-effect m-r-20 f-w-600 d-inline-block" (click)="save($event)">Save</button>
         <button (click)="closeMyModal($event)" class="btn btn-danger waves-effect m-r-20 f-w-600 md-close d-inline-block">Close</button>
     </div>
     <button (click)="closeMyModal($event)" aria-label="Close" class="md-close-btn">

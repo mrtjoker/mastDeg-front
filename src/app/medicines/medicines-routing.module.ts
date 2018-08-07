@@ -8,8 +8,8 @@ const routes: Routes = [
     component: MedicinesComponent,
     data: {
       title: 'Medicines',
-      icon: 'icon-layout-cta-right',
-      caption: 'ข้อมูลยา',
+      icon: 'icon-home',
+      caption: 'lorem ipsum dolor sit amet, consectetur adipisicing elit - medicines',
       status: true
     }
   }
