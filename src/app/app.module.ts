@@ -15,7 +15,6 @@ import { ApiService } from './shared/service/api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +28,7 @@ import { HttpModule } from '@angular/http';
     AppRoutingModule,
     SharedModule,
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   schemas: [],
   providers: [

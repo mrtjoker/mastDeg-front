@@ -9,6 +9,7 @@ import { TagInputModule } from 'ngx-chips';
 import { FormsModule } from '@angular/forms';
 import { MedicinesService } from '../shared/service/medicines.service';
 import { NgxDatatableModule } from '../../../node_modules/@swimlane/ngx-datatable';
+import { ArchwizardModule } from '../../../node_modules/ng2-archwizard/dist';
 @NgModule({
   imports: [
     CommonModule,
@@ -17,7 +18,8 @@ import { NgxDatatableModule } from '../../../node_modules/@swimlane/ngx-datatabl
     ChartModule,
     FormsModule,
     TagInputModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    ArchwizardModule
   ],
   declarations: [
     MedicinesComponent

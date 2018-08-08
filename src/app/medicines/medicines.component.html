@@ -1,14 +1,4 @@
 <div class="card">
-    <div class="row">
-        <div class="col-sm-12 col-xl-4">
-            <h4 class="sub-title">Tagging Support</h4>
-            <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="val" [addOnBlur]="true" [clearOnBlur]="true" (change)="insertVal()">
-                <tag-input-dropdown [autocompleteItems]="autocompleteItems"></tag-input-dropdown>
-            </tag-input>
-        </div>
-    </div>
-</div>
-<div class="card">
     <div class="card-header row">
         <div class="col-12 col-sm-6">
             <button type="button" class="btn btn-primary waves-effect waves-light f-right d-inline-block md-trigger" (click)="openMyModal('effect-13')">
@@ -45,98 +35,230 @@
 </div>
 
 <app-modal-animation [modalID]="'effect-13'" [modalClass]="'md-effect-13'">
-    <h3 class="f-26">Add Contact</h3>
-    <div class="text-center row">
-        <div class="col-12 col-sm-4">
-            <div class="input-group">
-                <span class="input-group-prepend" id="basic-addon1">
-                    <label class="input-group-text">
-                        <i class="icofont icofont-user"></i>
-                    </label>
-                </span>
-                <input type="text" name="name" class="form-control" [(ngModel)]="tmp.name">
+    <h3 class="f-26">เพิ่มยา</h3>
+    <wizard #wizard class="arc-wizard">
+        <wizard-step stepTitle="ข้อมูลยา">
+            <div class="centered-content">
+                <div class="text-center">
+                    <div class="input-group">
+                        <input type="text" name="name" class="form-control" placeholder="ชื่อการค้า" [(ngModel)]="tmp.name">
+                    </div>
+                    <div class="input-group">
+                        <input type="text" name="name" class="form-control" placeholder="ชื่อสามัญยา" [(ngModel)]="tmp.name">
+                    </div>
+                    <div class="input-group">
+                        <input type="text" name="name" class="form-control" placeholder="MIMS Class" [(ngModel)]="tmp.name">
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <div class="input-group">
+                                <input type="text" name="name" class="form-control" placeholder="ขนาดความแรง" [(ngModel)]="tmp.name">
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="input-group">
+                                <input type="text" name="name" class="form-control" placeholder="ขนาดความแรงต่อบรรจุภัณฑ์" [(ngModel)]="tmp.name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <div class="input-group">
+                                <input type="text" name="name" class="form-control" placeholder="เลขทะเบียนตำรับยา" [(ngModel)]="tmp.name">
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="input-group">
+                                <input type="text" name="name1" class="form-control" placeholder="เลขที่อนุญาต (เลข อย.)" [(ngModel)]="tmp.name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <div class="input-group">
+                                <input type="text" name="name" class="form-control" placeholder="Thai FDA" [(ngModel)]="tmp.name">
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="input-group">
+                                <input type="text" name="name" class="form-control" placeholder="US FDA" [(ngModel)]="tmp.name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <div class="input-group">
+                                <input type="text" name="name" class="form-control" placeholder="รูปแบบ" [(ngModel)]="tmp.name">
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="input-group">
+                                <input type="text" name="name" class="form-control" placeholder="สี" [(ngModel)]="tmp.name">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button (click)="closeMyModal($event)" aria-label="Close" class="md-close-btn">
+                    <i class="icofont icofont-ui-close"></i>
+                </button>
+
+                <div class="btn-group mt-10">
+                    <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
+                </div>
             </div>
-        </div>
-        <div class="col-12 col-sm-4">
-            <div class="input-group">
-                <!-- <span class="input-group-prepend" id="basic-addon2">
-                    <label class="input-group-text">
-                        <i class="icofont icofont-user"></i>
-                    </label>
-                </span> -->
-                <input type="text" class="form-control" placeholder="Email">
+        </wizard-step>
+        <wizard-step stepTitle="ข้อบ่งใช้">
+            <div class="centered-content">
+                <div class="text-left">
+                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="val" [addOnBlur]="true" [clearOnBlur]="true"
+                        (change)="insertVal()">
+                        <tag-input-dropdown zIndex=3000 [autocompleteItems]="autocompleteItems"></tag-input-dropdown>
+                    </tag-input>
+                </div>
+                <br>
+                <button (click)="closeMyModal($event)" aria-label="Close" class="md-close-btn">
+                    <i class="icofont icofont-ui-close"></i>
+                </button>
+                <div class="btn-group mt-10">
+                    <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
+                    <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
+                </div>
             </div>
-        </div>
-        <div class="col-12 col-sm-4">
-            <div class="input-group">
-                <span class="input-group-prepend" id="basic-addon2">
-                    <label class="input-group-text">
-                        <i class="icofont icofont-user"></i>
-                    </label>
-                </span>
-                <input type="text" class="form-control" placeholder="Email">
+        </wizard-step>
+        <wizard-step stepTitle="ขนาดที่ให้">
+            <div class="centered-content">
+                <div class="text-left">
+                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="val" [addOnBlur]="true" [clearOnBlur]="true"
+                        (change)="insertVal()">
+                        <tag-input-dropdown zIndex=3000 [autocompleteItems]="autocompleteItems"></tag-input-dropdown>
+                    </tag-input>
+                </div>
+                <br>
+                <button (click)="closeMyModal($event)" aria-label="Close" class="md-close-btn">
+                    <i class="icofont icofont-ui-close"></i>
+                </button>
+                <div class="btn-group mt-10">
+                    <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
+                    <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
+                </div>
             </div>
-        </div>
-        <div class="input-group">
-            <span class="input-group-prepend" id="basic-addon2">
-                <label class="input-group-text">
-                    <i class="icofont icofont-user"></i>
-                </label>
-            </span>
-            <input type="text" class="form-control" placeholder="Email">
-        </div>
-        <div class="input-group">
-            <span class="input-group-prepend" id="basic-addon2">
-                <label class="input-group-text">
-                    <i class="icofont icofont-user"></i>
-                </label>
-            </span>
-            <input type="text" class="form-control" placeholder="Email">
-        </div>
-        <div class="input-group">
-            <span class="input-group-prepend" id="basic-addon3">
-                <label class="input-group-text">
-                    <i class="icofont icofont-user"></i>
-                </label>
-            </span>
-            <input type="text" class="form-control" placeholder="Position">
-        </div>
-        <div class="input-group">
-            <span class="input-group-prepend" id="basic-addon4">
-                <label class="input-group-text">
-                    <i class="icofont icofont-user"></i>
-                </label>
-            </span>
-            <input type="text" class="form-control" placeholder="Office">
-        </div>
-        <div class="input-group">
-            <span class="input-group-prepend" id="basic-addon5">
-                <label class="input-group-text">
-                    <i class="icofont icofont-user"></i>
-                </label>
-            </span>
-            <input type="number" class="form-control" placeholder="Age">
-        </div>
-        <div class="input-group">
-            <span class="input-group-prepend" id="basic-addon6">
-                <label class="input-group-text">
-                    <i class="icofont icofont-user"></i>
-                </label>
-            </span>
-            <input type="text" class="form-control" placeholder="Phone Number">
-        </div>
-        <div class="input-group">
-            <span class="input-group-prepend" id="basic-addon7">
-                <label class="input-group-text">
-                    <i class="icofont icofont-user"></i>
-                </label>
-            </span>
-            <input id="dropper-default" class="form-control" type="text" placeholder="Select Your Birth Date" readonly="readonly">
-        </div>
-        <button type="button" class="btn btn-primary waves-effect m-r-20 f-w-600 d-inline-block" (click)="save($event)">Save</button>
-        <button (click)="closeMyModal($event)" class="btn btn-danger waves-effect m-r-20 f-w-600 md-close d-inline-block">Close</button>
-    </div>
-    <button (click)="closeMyModal($event)" aria-label="Close" class="md-close-btn">
-        <i class="icofont icofont-ui-close"></i>
-    </button>
+        </wizard-step>
+        <wizard-step stepTitle="คำแนะนำ">
+            <div class="centered-content">
+                <div class="text-left">
+                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="val" [addOnBlur]="true" [clearOnBlur]="true"
+                        (change)="insertVal()">
+                        <tag-input-dropdown zIndex=3000 [autocompleteItems]="autocompleteItems"></tag-input-dropdown>
+                    </tag-input>
+                </div>
+                <br>
+                <button (click)="closeMyModal($event)" aria-label="Close" class="md-close-btn">
+                    <i class="icofont icofont-ui-close"></i>
+                </button>
+                <div class="btn-group mt-10">
+                    <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
+                    <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
+                </div>
+            </div>
+        </wizard-step>
+        <wizard-step stepTitle="ข้อควรระวัง">
+            <div class="centered-content">
+                <div class="text-left">
+                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="val" [addOnBlur]="true" [clearOnBlur]="true"
+                        (change)="insertVal()">
+                        <tag-input-dropdown zIndex=3000 [autocompleteItems]="autocompleteItems"></tag-input-dropdown>
+                    </tag-input>
+                </div>
+                <br>
+                <button (click)="closeMyModal($event)" aria-label="Close" class="md-close-btn">
+                    <i class="icofont icofont-ui-close"></i>
+                </button>
+                <div class="btn-group mt-10">
+                    <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
+                    <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
+                </div>
+            </div>
+        </wizard-step>
+        <wizard-step stepTitle="คำเตือน">
+            <div class="centered-content">
+                <div class="text-left">
+                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="val" [addOnBlur]="true" [clearOnBlur]="true"
+                        (change)="insertVal()">
+                        <tag-input-dropdown zIndex=3000 [autocompleteItems]="autocompleteItems"></tag-input-dropdown>
+                    </tag-input>
+                </div>
+                <br>
+                <button (click)="closeMyModal($event)" aria-label="Close" class="md-close-btn">
+                    <i class="icofont icofont-ui-close"></i>
+                </button>
+                <div class="btn-group mt-10">
+                    <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
+                    <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
+                </div>
+            </div>
+        </wizard-step>
+        <wizard-step stepTitle="อาการไม่พึงประสงค์">
+            <div class="centered-content">
+                <div class="text-left">
+                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="val" [addOnBlur]="true" [clearOnBlur]="true"
+                        (change)="insertVal()">
+                        <tag-input-dropdown zIndex=3000 [autocompleteItems]="autocompleteItems"></tag-input-dropdown>
+                    </tag-input>
+                </div>
+                <br>
+                <button (click)="closeMyModal($event)" aria-label="Close" class="md-close-btn">
+                    <i class="icofont icofont-ui-close"></i>
+                </button>
+                <div class="btn-group mt-10">
+                    <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
+                    <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
+                </div>
+            </div>
+        </wizard-step>
+        <wizard-step stepTitle="อันตรกิริยาระหว่างยา">
+            <div class="centered-content">
+                <div class="text-left">
+                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="val" [addOnBlur]="true" [clearOnBlur]="true"
+                        (change)="insertVal()">
+                        <tag-input-dropdown zIndex=3000 [autocompleteItems]="autocompleteItems"></tag-input-dropdown>
+                    </tag-input>
+                </div>
+                <br>
+                <button (click)="closeMyModal($event)" aria-label="Close" class="md-close-btn">
+                    <i class="icofont icofont-ui-close"></i>
+                </button>
+                <div class="btn-group mt-10">
+                    <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
+                    <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
+                </div>
+            </div>
+        </wizard-step>
+        <wizard-step stepTitle="ข้อมูลบริษัท">
+            <div class="centered-content">
+                <div class="text-center">
+
+                </div>
+                <button (click)="closeMyModal($event)" aria-label="Close" class="md-close-btn">
+                    <i class="icofont icofont-ui-close"></i>
+                </button>
+
+                <div class="btn-group mt-10">
+                    <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
+                    <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
+                </div>
+            </div>
+        </wizard-step>
+        <wizard-step stepTitle="ยืนยัน">
+            <div class="centered-content">
+                <div>
+                    <h4>ยืนยันการบันทึกข้อมูลยา</h4>
+                </div>
+
+                <div class="btn-group mt-10">
+                    <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
+                    <button type="button" class="btn btn-primary btn-sm" (click)="save($event)">บันทึก</button>
+                </div>
+            </div>
+        </wizard-step>
+    </wizard>
 </app-modal-animation>

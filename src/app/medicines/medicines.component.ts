@@ -16,7 +16,8 @@ import { MedicinesService } from '../shared/service/medicines.service';
   selector: 'app-medicines',
   templateUrl: './medicines.component.html',
   styleUrls: ['./medicines.component.scss',
-    '../../assets/icon/icofont/css/icofont.scss']
+    '../../assets/icon/icofont/css/icofont.scss',
+    '../../../node_modules/famfamfam-flags/dist/sprite/famfamfam-flags.min.css']
 })
 export class MedicinesComponent implements OnInit {
   simpleOption: Array<IOption> = this.selectOptionService.getCharacters();
@@ -34,17 +35,17 @@ export class MedicinesComponent implements OnInit {
     name: '',
     type: '',
   }
-  autocompleteItems = ['Alabama', 'Wyoming', 'Henry Die', 'John Doe','อาเจียน'];
+  autocompleteItems = ['Alabama', 'Wyoming', 'Henry Die', 'John Doe', 'อาเจียน'];
 
   constructor(public selectOptionService: SelectOptionService,
-    private medicinesService: MedicinesService
+    private medicinesService: MedicinesService,
   ) { }
 
   ngOnInit() {
-    this.runTimer();
-    this.dataSub = this.selectOptionService.loadCharacters().subscribe((options) => {
-      this.characters = options;
-    });
+    // this.runTimer();
+    // this.dataSub = this.selectOptionService.loadCharacters().subscribe((options) => {
+    //   this.characters = options;
+    // });
     this.medicinesService.getAllMedicines().subscribe((results) => {
       this.tempFilter = [...results];
       this.rowsFilter = results;
@@ -106,14 +107,14 @@ export class MedicinesComponent implements OnInit {
     if (this.dataSub !== null) { this.dataSub.unsubscribe(); }
   }
 
-  runTimer() {
-    const timer = setInterval(() => {
-      this.timeLeft -= 1;
-      if (this.timeLeft === 0) {
-        clearInterval(timer);
-      }
-    }, 1000);
-  }
+  // runTimer() {
+  //   const timer = setInterval(() => {
+  //     this.timeLeft -= 1;
+  //     if (this.timeLeft === 0) {
+  //       clearInterval(timer);
+  //     }
+  //   }, 1000);
+  // }
 
   insertVal() {
     console.log(this.val)

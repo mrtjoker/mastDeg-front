@@ -15,7 +15,7 @@
   body {
     height: 100%;
     overflow: hidden;
-    background: #222;
+    background: pink;
     -webkit-perspective: 600px;
     -moz-perspective: 600px;
     perspective: 600px;
@@ -31,7 +31,7 @@
   top: 50%;
   left: 50%;
   width: 50%;
-  max-width: 630px;
+  max-width: 900px;
   min-width: 320px;
   height: auto;
   z-index: 2000;
@@ -84,7 +84,7 @@
     padding: 0.4em;
     text-align: center;
     font-size: 1.7em;
-    background: #222;
+    background: palevioletred;
     border-radius: 3px 3px 0 0;
   }
   > div {
