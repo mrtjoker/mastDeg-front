@@ -32,11 +32,33 @@ export class MedicinesComponent implements OnInit {
   public value: string;
   public tmp = {};
   public temp = {
-    name: '',
-    type: '',
+    adverseReactions: '',
+    advice: '',
+    color: '',
+    colorCode: '',
+    brandName: '',
+    contraindications: '',
+    dosage: '',
+    factory: '',
+    form: '',
+    genericName: '',
+    imprint: '',
+    indications: '',
+    interactions: '',
+    mimsClass: '',
+    presentation: '',
+    presentationPack: '',
+    initialThaiFDA: '',
+    thaiFDAEN: '',
+    thaiFDATH: '',
+    usFDA: '',
+    warning: '',
+    registrationNumber: '',
+    numberFD: ''
   }
-  autocompleteItems = ['Alabama', 'Wyoming', 'Henry Die', 'John Doe', 'อาเจียน'];
 
+  autocompleteItems = ['Alabama', 'Wyoming', 'Henry Die', 'John Doe', 'อาเจียน'];
+  indications = ['Alabama', 'Wyoming', 'Henry Die', 'John Doe', 'อาเจียน'];
   constructor(public selectOptionService: SelectOptionService,
     private medicinesService: MedicinesService,
   ) { }

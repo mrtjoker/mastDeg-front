@@ -33,7 +33,7 @@ export class ColorComponent implements OnInit {
   }
 
   insert() {
-    this.tmp = { color: this.value };
+    this.tmp = { color: this.value, colorCode: ''};
     this.value = '';
     this.colorService.addColor(this.tmp).pipe(
       mergeMap(() => this.colorService.getAllColor()))
