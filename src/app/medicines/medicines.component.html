@@ -39,61 +39,88 @@
     <wizard #wizard class="arc-wizard">
         <wizard-step stepTitle="ข้อมูลยา">
             <div class="centered-content">
-                <div class="text-center">
-                    <div class="input-group">
-                        <input type="text" name="brandName" class="form-control" placeholder="ชื่อการค้า" [(ngModel)]="temp.brandName">
-                    </div>
-                    <div class="input-group">
-                        <input type="text" name="genericName" class="form-control" placeholder="ชื่อสามัญยา" [(ngModel)]="temp.genericName">
-                    </div>
-                    <div class="input-group">
-                        <input type="text" name="mimsClass" class="form-control" placeholder="MIMS Class" [(ngModel)]="temp.mimsClass">
+                <div class="text-left">
+                    ชื่อการค้า
+                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.brandName" [addOnBlur]="true"
+                        [clearOnBlur]="true">
+                        <tag-input-dropdown zIndex=3000 [autocompleteItems]="brandName"></tag-input-dropdown>
+                    </tag-input>
+                    ชื่อสามัญยา
+                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.genericName" [addOnBlur]="true"
+                        [clearOnBlur]="true">
+                        <tag-input-dropdown zIndex=3000 [autocompleteItems]="genericName"></tag-input-dropdown>
+                    </tag-input>
+                    MIMS Class
+                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.mimsClass" [addOnBlur]="true"
+                        [clearOnBlur]="true">
+                        <tag-input-dropdown zIndex=3000 [autocompleteItems]="mimsClass"></tag-input-dropdown>
+                    </tag-input>
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            ขนาดความแรง
+                            <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.presentation"
+                                [addOnBlur]="true" [clearOnBlur]="true">
+                                <tag-input-dropdown zIndex=3000 [autocompleteItems]="presentation"></tag-input-dropdown>
+                            </tag-input>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            ขนาดความแรงต่อบรรจุภัณฑ์
+                            <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.presentationPack"
+                                [addOnBlur]="true" [clearOnBlur]="true">
+                                <tag-input-dropdown zIndex=3000 [autocompleteItems]="presentationPack"></tag-input-dropdown>
+                            </tag-input>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-12 col-sm-6">
-                            <div class="input-group">
-                                <input type="text" name="presentation" class="form-control" placeholder="ขนาดความแรง" [(ngModel)]="temp.presentation">
-                            </div>
+                            Thai FDA
+                            <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.thaiFDATH" [addOnBlur]="true"
+                                [clearOnBlur]="true">
+                                <tag-input-dropdown zIndex=3000 [autocompleteItems]="thaiFDATH"></tag-input-dropdown>
+                            </tag-input>
                         </div>
                         <div class="col-12 col-sm-6">
-                            <div class="input-group">
-                                <input type="text" name="presentationPack" class="form-control" placeholder="ขนาดความแรงต่อบรรจุภัณฑ์" [(ngModel)]="temp.presentationPack">
-                            </div>
+                            US FDA
+                            <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.usFDA" [addOnBlur]="true"
+                                [clearOnBlur]="true">
+                                <tag-input-dropdown zIndex=3000 [autocompleteItems]="usFDA"></tag-input-dropdown>
+                            </tag-input>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-4">
+                            รูปแบบ
+                            <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.form" [addOnBlur]="true"
+                                [clearOnBlur]="true">
+                                <tag-input-dropdown zIndex=3000 [autocompleteItems]="form"></tag-input-dropdown>
+                            </tag-input>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                            Imprint
+                            <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.imprint" [addOnBlur]="true"
+                                [clearOnBlur]="true">
+                                <tag-input-dropdown zIndex=3000 [autocompleteItems]="imprint"></tag-input-dropdown>
+                            </tag-input>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                            สี
+                            <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.color" [addOnBlur]="true"
+                                [clearOnBlur]="true">
+                                <tag-input-dropdown zIndex=3000 [autocompleteItems]="color"></tag-input-dropdown>
+                            </tag-input>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12 col-sm-6">
+                            เลขทะเบียนตำรับยา
                             <div class="input-group">
                                 <input type="text" name="registrationNumber" class="form-control" placeholder="เลขทะเบียนตำรับยา" [(ngModel)]="temp.registrationNumber">
                             </div>
                         </div>
                         <div class="col-12 col-sm-6">
+                            เลขที่อนุญาต (เลข อย.)
                             <div class="input-group">
                                 <input type="text" name="numberFD" class="form-control" placeholder="เลขที่อนุญาต (เลข อย.)" [(ngModel)]="temp.numberFD">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 col-sm-6">
-                            <div class="input-group">
-                                <input type="text" name="thaiFDATH" class="form-control" placeholder="Thai FDA" [(ngModel)]="temp.thaiFDATH">
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6">
-                            <div class="input-group">
-                                <input type="text" name="usFDA" class="form-control" placeholder="US FDA" [(ngModel)]="temp.usFDA">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 col-sm-6">
-                            <div class="input-group">
-                                <input type="text" name="form" class="form-control" placeholder="รูปแบบ" [(ngModel)]="temp.form">
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6">
-                            <div class="input-group">
-                                <input type="text" name="color" class="form-control" placeholder="สี" [(ngModel)]="temp.color">
                             </div>
                         </div>
                     </div>
@@ -101,7 +128,6 @@
                 <button (click)="closeMyModal($event)" aria-label="Close" class="md-close-btn">
                     <i class="icofont icofont-ui-close"></i>
                 </button>
-
                 <div class="btn-group mt-10">
                     <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
                 </div>
@@ -110,9 +136,9 @@
         <wizard-step stepTitle="ข้อบ่งใช้">
             <div class="centered-content">
                 <div class="text-left">
-                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.indications" [addOnBlur]="true" [clearOnBlur]="true"
-                        (change)="insertVal()">
-                        <tag-input-dropdown zIndex=3000 [autocompleteItems]="indications"></tag-input-dropdown>
+                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.indications" [addOnBlur]="true"
+                        [clearOnBlur]="true">
+                        <tag-input-dropdown zIndex=3000 [autocompleteItems]="indications    "></tag-input-dropdown>
                     </tag-input>
                 </div>
                 <br>
@@ -128,8 +154,7 @@
         <wizard-step stepTitle="ขนาดที่ให้">
             <div class="centered-content">
                 <div class="text-left">
-                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.dosage" [addOnBlur]="true" [clearOnBlur]="true"
-                        (change)="insertVal()">
+                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.dosage" [addOnBlur]="true" [clearOnBlur]="true">
                         <tag-input-dropdown zIndex=3000 [autocompleteItems]="dosage"></tag-input-dropdown>
                     </tag-input>
                 </div>
@@ -146,8 +171,7 @@
         <wizard-step stepTitle="คำแนะนำ">
             <div class="centered-content">
                 <div class="text-left">
-                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.advice" [addOnBlur]="true" [clearOnBlur]="true"
-                        (change)="insertVal()">
+                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.advice" [addOnBlur]="true" [clearOnBlur]="true">
                         <tag-input-dropdown zIndex=3000 [autocompleteItems]="advice"></tag-input-dropdown>
                     </tag-input>
                 </div>
@@ -164,8 +188,8 @@
         <wizard-step stepTitle="ข้อควรระวัง">
             <div class="centered-content">
                 <div class="text-left">
-                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.contraindications" [addOnBlur]="true" [clearOnBlur]="true"
-                        (change)="insertVal()">
+                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.contraindications" [addOnBlur]="true"
+                        [clearOnBlur]="true">
                         <tag-input-dropdown zIndex=3000 [autocompleteItems]="contraindications"></tag-input-dropdown>
                     </tag-input>
                 </div>
@@ -182,8 +206,7 @@
         <wizard-step stepTitle="คำเตือน">
             <div class="centered-content">
                 <div class="text-left">
-                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.warning" [addOnBlur]="true" [clearOnBlur]="true"
-                        (change)="insertVal()">
+                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.warning" [addOnBlur]="true" [clearOnBlur]="true">
                         <tag-input-dropdown zIndex=3000 [autocompleteItems]="warning"></tag-input-dropdown>
                     </tag-input>
                 </div>
@@ -200,8 +223,8 @@
         <wizard-step stepTitle="อาการไม่พึงประสงค์">
             <div class="centered-content">
                 <div class="text-left">
-                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.adverseReactions" [addOnBlur]="true" [clearOnBlur]="true"
-                        (change)="insertVal()">
+                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.adverseReactions" [addOnBlur]="true"
+                        [clearOnBlur]="true">
                         <tag-input-dropdown zIndex=3000 [autocompleteItems]="adverseReactions"></tag-input-dropdown>
                     </tag-input>
                 </div>
@@ -218,8 +241,8 @@
         <wizard-step stepTitle="อันตรกิริยาระหว่างยา">
             <div class="centered-content">
                 <div class="text-left">
-                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.interactions" [addOnBlur]="true" [clearOnBlur]="true"
-                        (change)="insertVal()">
+                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.interactions" [addOnBlur]="true"
+                        [clearOnBlur]="true">
                         <tag-input-dropdown zIndex=3000 [autocompleteItems]="interactions"></tag-input-dropdown>
                     </tag-input>
                 </div>
@@ -235,8 +258,27 @@
         </wizard-step>
         <wizard-step stepTitle="ข้อมูลบริษัท">
             <div class="centered-content">
-                <div class="text-center">
-
+                <div class="text-left">
+                    บริษัทผู้รับอนุญาต
+                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.allowFacturer" [addOnBlur]="true"
+                        [clearOnBlur]="true">
+                        <tag-input-dropdown zIndex=3000 [autocompleteItems]="factory"></tag-input-dropdown>
+                    </tag-input>
+                    บริษัทผู้ผลิต
+                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.manuFacturer" [addOnBlur]="true"
+                        [clearOnBlur]="true">
+                        <tag-input-dropdown zIndex=3000 [autocompleteItems]="factory"></tag-input-dropdown>
+                    </tag-input>
+                    บริษัทผู้จำหน่าย
+                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.distributor" [addOnBlur]="true"
+                        [clearOnBlur]="true">
+                        <tag-input-dropdown zIndex=3000 [autocompleteItems]="factory"></tag-input-dropdown>
+                    </tag-input>
+                    Marketer
+                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.marketer" [addOnBlur]="true"
+                        [clearOnBlur]="true">
+                        <tag-input-dropdown zIndex=3000 [autocompleteItems]="factory"></tag-input-dropdown>
+                    </tag-input>
                 </div>
                 <button (click)="closeMyModal($event)" aria-label="Close" class="md-close-btn">
                     <i class="icofont icofont-ui-close"></i>
@@ -244,14 +286,14 @@
 
                 <div class="btn-group mt-10">
                     <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
-                    <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
+                    <button type="button" class="btn btn-primary btn-sm" (click)="insertVal()" nextStep>ต่อไป</button>
                 </div>
             </div>
         </wizard-step>
         <wizard-step stepTitle="ยืนยัน">
             <div class="centered-content">
                 <div>
-                    <h4>ยืนยันการบันทึกข้อมูลยา</h4>
+                    <h4>ยืนยันการบันทึกข้อมูล</h4>
                 </div>
 
                 <div class="btn-group mt-10">

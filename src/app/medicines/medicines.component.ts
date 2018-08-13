@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IOption } from 'ng-select';
 import { Subscription } from 'rxjs/Subscription';
-import { SelectOptionService } from '../shared/elements/select-option.service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
@@ -12,6 +11,13 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/first';
 import { mergeMap } from 'rxjs/operators';
 import { MedicinesService } from '../shared/service/medicines.service';
+import { IndicationsService } from '../shared/service/indications.service';
+import { DosageService } from '../shared/service/dosage.service';
+import { AdviceService } from '../shared/service/advice.service';
+import { WarningService } from '../shared/service/warning.service';
+import { ContraindicationsService } from '../shared/service/contraindications.service';
+import { InteractionsService } from '../shared/service/interactions.service';
+import { AdverseReactionsService } from '../shared/service/adverse-reactions.service';
 @Component({
   selector: 'app-medicines',
   templateUrl: './medicines.component.html',
@@ -20,17 +26,29 @@ import { MedicinesService } from '../shared/service/medicines.service';
     '../../../node_modules/famfamfam-flags/dist/sprite/famfamfam-flags.min.css']
 })
 export class MedicinesComponent implements OnInit {
-  simpleOption: Array<IOption> = this.selectOptionService.getCharacters();
-  isDisabled = true;
-  characters: Array<IOption>;
-  timeLeft = 5;
-  val: string;
-  private dataSub: Subscription = null;
   public rowsFilter = [];
   public tempFilter = [];
   public table: any;
   public value: string;
   public tmp = {};
+  public brandName = [];
+  public genericName = [];
+  public mimsClass = [];
+  public presentation = [];
+  public presentationPack = [];
+  public thaiFDATH = [];
+  public usFDA = [];
+  public form = [];
+  public imprint = [];
+  public color = [];
+  public indications = [];
+  public dosage = [];
+  public advice = [];
+  public contraindications = [];
+  public warning = [];
+  public adverseReactions = [];
+  public interactions = [];
+  public factory = [];
   public temp = {
     adverseReactions: '',
     advice: '',
@@ -39,7 +57,6 @@ export class MedicinesComponent implements OnInit {
     brandName: '',
     contraindications: '',
     dosage: '',
-    factory: '',
     form: '',
     genericName: '',
     imprint: '',
@@ -54,23 +71,51 @@ export class MedicinesComponent implements OnInit {
     usFDA: '',
     warning: '',
     registrationNumber: '',
-    numberFD: ''
-  }
-
-  autocompleteItems = ['Alabama', 'Wyoming', 'Henry Die', 'John Doe', 'อาเจียน'];
-  indications = ['Alabama', 'Wyoming', 'Henry Die', 'John Doe', 'อาเจียน'];
-  constructor(public selectOptionService: SelectOptionService,
+    numberFD: '',
+    allowFacturer: '',
+    manuFacturer: '',
+    distributor: '',
+    marketer: '',
+  };
+  constructor(
     private medicinesService: MedicinesService,
+    private indicationsService: IndicationsService,
+    private dosageService: DosageService,
+    private adviceService: AdviceService,
+    private contraindicationsService: ContraindicationsService,
+    private warningService: WarningService,
+    private adverseReactionsService: AdverseReactionsService,
+    private interactionsService: InteractionsService,
   ) { }
 
   ngOnInit() {
-    // this.runTimer();
-    // this.dataSub = this.selectOptionService.loadCharacters().subscribe((options) => {
-    //   this.characters = options;
-    // });
+    this.indicationsService.getAllIndications().subscribe((result) => {
+      result.forEach(element => { this.indications.push(element.indications); });
+    });
+    this.dosageService.getAllDosage().subscribe((result) => {
+      result.forEach(element => { this.dosage.push(element.dosage); });
+    });
+    this.adviceService.getAllAdvice().subscribe((result) => {
+      result.forEach(element => { this.advice.push(element.advice); });
+    });
+    this.contraindicationsService.getAllContraindications().subscribe((result) => {
+      result.forEach(element => { this.contraindications.push(element.contraindications); });
+    });
+    this.warningService.getAllWarning().subscribe((result) => {
+      result.forEach(element => { this.warning.push(element.warning); });
+    });
+    this.adverseReactionsService.getAllAdverseReactions().subscribe((result) => {
+      result.forEach(element => { this.adverseReactions.push(element.adverseReactions); });
+    });
+    this.interactionsService.getAllInteractions().subscribe((result) => {
+      result.forEach(element => { this.interactions.push(element.interactions); });
+    });
     this.medicinesService.getAllMedicines().subscribe((results) => {
       this.tempFilter = [...results];
       this.rowsFilter = results;
+      this.rowsFilter.forEach(element => {
+        console.log(element.indications[0].value)
+      });
     });
   }
 
@@ -121,24 +166,39 @@ export class MedicinesComponent implements OnInit {
   }
 
   save(event) {
-    console.log(this.tmp);
     ((event.target.parentElement.parentElement).parentElement).classList.remove('md-show');
   }
 
-  ngOnDestroy() {
-    if (this.dataSub !== null) { this.dataSub.unsubscribe(); }
-  }
-
-  // runTimer() {
-  //   const timer = setInterval(() => {
-  //     this.timeLeft -= 1;
-  //     if (this.timeLeft === 0) {
-  //       clearInterval(timer);
-  //     }
-  //   }, 1000);
-  // }
-
   insertVal() {
-    console.log(this.val)
+    this.medicinesService.addMedicines(this.temp).subscribe();
+    console.log(this.temp)
+    this.temp = {
+      adverseReactions: '',
+      advice: '',
+      color: '',
+      colorCode: '',
+      brandName: '',
+      contraindications: '',
+      dosage: '',
+      form: '',
+      genericName: '',
+      imprint: '',
+      indications: '',
+      interactions: '',
+      mimsClass: '',
+      presentation: '',
+      presentationPack: '',
+      initialThaiFDA: '',
+      thaiFDAEN: '',
+      thaiFDATH: '',
+      usFDA: '',
+      warning: '',
+      registrationNumber: '',
+      numberFD: '',
+      allowFacturer: '',
+      manuFacturer: '',
+      distributor: '',
+      marketer: '',
+    };
   }
 }

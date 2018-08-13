@@ -125,6 +125,13 @@ const MENUITEMS = [
         name: 'ข้อมูลยา',
         type: 'link',
         icon: 'feather icon-aperture rotate-refresh'
+      },
+      {
+        state: 'search-medicines',
+        short_label: 'M',
+        name: 'ค้นหายา',
+        type: 'link',
+        icon: 'feather icon-search'
       }
     ],
   },
