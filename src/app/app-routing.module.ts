@@ -23,6 +23,10 @@ const routes: Routes = [
         loadChildren: './medicines/medicines.module#MedicinesModule'
       },
       {
+        path: 'search-medicines',
+        loadChildren: './search-medicines/search-medicines.module#SearchMedicinesModule'
+      },
+      {
         path: 'dashboard',
         loadChildren: './theme/dashboard/dashboard.module#DashboardModule'
       },

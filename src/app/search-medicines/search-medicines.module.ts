@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MedicinesComponent } from './medicines.component';
-import { MedicinesRoutingModule } from './medicines-routing.module';
+import { SearchMedicinesComponent } from './search-medicines.component';
+import { SearchMedicinesRoutingModule } from './search-medicines-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { ChartModule } from 'angular2-chartjs';
 import { SelectOptionService } from '../shared/elements/select-option.service';
 import { TagInputModule } from 'ngx-chips';
 import { FormsModule } from '@angular/forms';
-import { MedicinesService } from '../shared/service/medicines.service';
+import { SearchMedicinesService } from '../shared/service/search-medicines.service';
 import { NgxDatatableModule } from '../../../node_modules/@swimlane/ngx-datatable';
 import { ArchwizardModule } from '../../../node_modules/ng2-archwizard/dist';
 import { IndicationsService } from '../shared/service/indications.service';
@@ -20,7 +20,7 @@ import { InteractionsService } from '../shared/service/interactions.service';
 @NgModule({
   imports: [
     CommonModule,
-    MedicinesRoutingModule,
+    SearchMedicinesRoutingModule,
     SharedModule,
     ChartModule,
     FormsModule,
@@ -29,11 +29,11 @@ import { InteractionsService } from '../shared/service/interactions.service';
     ArchwizardModule
   ],
   declarations: [
-    MedicinesComponent
+    SearchMedicinesComponent
   ],
   providers: [
     SelectOptionService,
-    MedicinesService,
+    SearchMedicinesService,
     IndicationsService,
     DosageService,
     AdviceService,
@@ -43,4 +43,4 @@ import { InteractionsService } from '../shared/service/interactions.service';
     InteractionsService,
   ]
 })
-export class MedicinesModule { }
+export class SearchMedicinesModule { }

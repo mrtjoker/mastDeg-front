@@ -24,5 +24,4 @@ export class IndicationsService {
     deleteIndications(id: string): Observable<any> {
         return this.apiService.delete('indications/' + id);
     }
-    
 }

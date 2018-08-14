@@ -1,15 +1,15 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {MedicinesComponent} from './medicines.component';
+import {SearchMedicinesComponent} from './search-medicines.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: MedicinesComponent,
+    component: SearchMedicinesComponent,
     data: {
-      title: 'Medicines',
+      title: 'Search Medicines',
       icon: 'icon-home',
-      caption: 'lorem ipsum dolor sit amet, consectetur adipisicing elit - medicines',
+      caption: 'lorem ipsum dolor sit amet, consectetur adipisicing elit - search-medicines',
       status: true
     }
   }
@@ -19,4 +19,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class MedicinesRoutingModule { }
+export class SearchMedicinesRoutingModule { }
