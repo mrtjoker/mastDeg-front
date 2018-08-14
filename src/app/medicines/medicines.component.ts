@@ -56,9 +56,13 @@ export class MedicinesComponent implements OnInit {
     registrationNumber: '',
     numberFD: ''
   }
-
+  adverseReactions
   autocompleteItems = ['Alabama', 'Wyoming', 'Henry Die', 'John Doe', 'อาเจียน'];
-  indications = ['Alabama', 'Wyoming', 'Henry Die', 'John Doe', 'อาเจียน'];
+  indications = ['11111', 'Wyoming', 'Henry Die', 'John Doe', 'อาเจียน'];
+  dosage = []
+  warning
+  contraindications
+  advice
   constructor(public selectOptionService: SelectOptionService,
     private medicinesService: MedicinesService,
   ) { }
