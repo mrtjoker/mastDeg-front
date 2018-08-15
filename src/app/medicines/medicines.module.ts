@@ -17,6 +17,17 @@ import { ContraindicationsService } from '../shared/service/contraindications.se
 import { WarningService } from '../shared/service/warning.service';
 import { AdverseReactionsService } from '../shared/service/adverse-reactions.service';
 import { InteractionsService } from '../shared/service/interactions.service';
+import { BrandNameService } from '../shared/service/brand-name.service';
+import { GenericNameService } from '../shared/service/generic-name.service';
+import { MimsService } from '../shared/service/mims.service';
+import { PresentationPackService } from '../shared/service/presentation-pack.service';
+import { PresentationService } from '../shared/service/presentation.service';
+import { UsFDAService } from '../shared/service/us-fda.service';
+import { ThaiFDAService } from '../shared/service/thai-fda.service';
+import { ImprintService } from '../shared/service/imprint.service';
+import { FormService } from '../shared/service/form.service';
+import { ColorService } from '../shared/service/color.service';
+import { FactoryService } from '../shared/service/factory.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -41,6 +52,17 @@ import { InteractionsService } from '../shared/service/interactions.service';
     WarningService,
     AdverseReactionsService,
     InteractionsService,
+    BrandNameService,
+    GenericNameService,
+    MimsService,
+    PresentationService,
+    PresentationPackService,
+    ThaiFDAService,
+    UsFDAService,
+    FormService,
+    ImprintService,
+    ColorService,
+    FactoryService
   ]
 })
 export class MedicinesModule { }
