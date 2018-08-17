@@ -28,6 +28,7 @@ import { ImprintService } from '../shared/service/imprint.service';
 import { FormService } from '../shared/service/form.service';
 import { ColorService } from '../shared/service/color.service';
 import { FactoryService } from '../shared/service/factory.service';
+import { ShapeService } from '../shared/service/shape.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -55,6 +56,7 @@ import { FactoryService } from '../shared/service/factory.service';
     BrandNameService,
     GenericNameService,
     MimsService,
+    ShapeService,
     PresentationService,
     PresentationPackService,
     ThaiFDAService,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { IOption } from 'ng-select';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/map';
@@ -29,6 +29,7 @@ import { FormService } from '../shared/service/form.service';
 import { ImprintService } from '../shared/service/imprint.service';
 import { ColorService } from '../shared/service/color.service';
 import { FactoryService } from '../shared/service/factory.service';
+import { ShapeService } from '../shared/service/shape.service';
 @Component({
   selector: 'app-medicines',
   templateUrl: './medicines.component.html',
@@ -51,6 +52,7 @@ export class MedicinesComponent implements OnInit {
   public usFDA = [];
   public form = [];
   public imprint = [];
+  public shape = [];
   public color = [];
   public indications = [];
   public dosage = [];
@@ -69,6 +71,7 @@ export class MedicinesComponent implements OnInit {
     contraindications: '',
     dosage: '',
     form: '',
+    shape: '',
     genericName: '',
     imprint: '',
     indications: '',
@@ -88,6 +91,35 @@ export class MedicinesComponent implements OnInit {
     distributor: '',
     marketer: '',
   };
+  public tempView = {
+    adverseReactions: '',
+    advice: '',
+    color: '',
+    colorCode: '',
+    brandName: '',
+    contraindications: '',
+    dosage: '',
+    form: '',
+    shape: '',
+    genericName: '',
+    imprint: '',
+    indications: '',
+    interactions: '',
+    mimsClass: '',
+    presentation: '',
+    presentationPack: '',
+    initialThaiFDA: '',
+    thaiFDAEN: '',
+    thaiFDATH: '',
+    usFDA: '',
+    warning: '',
+    registrationNumber: '',
+    numberFD: '',
+    allowFacturer: '',
+    manuFacturer: '',
+    distributor: '',
+    marketer: '',
+  }
   constructor(
     private brandNameService: BrandNameService,
     private genericNameService: GenericNameService,
@@ -98,6 +130,7 @@ export class MedicinesComponent implements OnInit {
     private usFDAService: UsFDAService,
     private formService: FormService,
     private imprintService: ImprintService,
+    private shapeService: ShapeService,
     private colorService: ColorService,
     private medicinesService: MedicinesService,
     private indicationsService: IndicationsService,
@@ -132,11 +165,14 @@ export class MedicinesComponent implements OnInit {
     this.usFDAService.getAllUsFDA().subscribe((result) => {
       result.forEach(element => { this.usFDA.push(element.usFDA); });
     });
+    this.imprintService.getAllImprint().subscribe((result) => {
+      result.forEach(element => { this.imprint.push(element.imprint); });
+    });
     this.formService.getAllForm().subscribe((result) => {
       result.forEach(element => { this.form.push(element.form); });
     });
-    this.imprintService.getAllImprint().subscribe((result) => {
-      result.forEach(element => { this.imprint.push(element.imprint); });
+    this.shapeService.getAllShape().subscribe((result) => {
+      result.forEach(element => { this.shape.push(element.shape); });
     });
     this.colorService.getAllColor().subscribe((result) => {
       result.forEach(element => { this.color.push(element.color); });
@@ -213,6 +249,11 @@ export class MedicinesComponent implements OnInit {
     document.querySelector('#' + event).classList.add('md-show');
   }
 
+  openMyModalData(data) {
+    console.log(data)
+    this.tempView = data;
+  }
+
   closeMyModal(event) {
     ((event.target.parentElement.parentElement).parentElement).classList.remove('md-show');
   }
@@ -237,6 +278,7 @@ export class MedicinesComponent implements OnInit {
       contraindications: '',
       dosage: '',
       form: '',
+      shape: '',
       genericName: '',
       imprint: '',
       indications: '',

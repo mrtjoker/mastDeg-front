@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="card-block">
-        <ngx-datatable #table class='data-table' [columnMode]="'force'" [scrollbarH]="true" [headerHeight]="50" [footerHeight]="50"
+        <ngx-datatable #table class="data-table sortable resizeable sort-active sort-asc" [columnMode]="'force'" [scrollbarH]="true" [headerHeight]="50" [footerHeight]="50"
             [rowHeight]="50" [limit]="10" [rows]='rowsFilter' [reorderable]="true">
             <ngx-datatable-column name="ชื่อการค้า">
                 <ng-template let-row="row" ngx-datatable-cell-template>
@@ -43,7 +43,7 @@
             </ngx-datatable-column>
             <ngx-datatable-column name="ดำเนินการ" [maxWidth]="100">
                 <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
-                    <a href="javascript:;" class="m-r-15 crm-action-view text-info" (click)="openMyModalData(i);modalDefault.show();">
+                    <a href="javascript:;" class="m-r-15 crm-action-view text-info" (click)="openMyModalData(row);modalDefault.show();">
                         <i class="fa fa-book"></i>
                     </a>
                     <a href="javascript:;" class="m-r-15 crm-action-edit text-primary" (click)="update(row)">
@@ -58,7 +58,7 @@
     </div>
 </div>
 
-<app-modal-animation [modalID]="'effect-13'" [modalClass]="'md-effect-13'">
+<app-modal-animation [modalID]="'effect-13'" [modalClass]="'md-effect-2'">
     <h3 class="f-26">เพิ่มยา</h3>
     <wizard #wizard class="arc-wizard">
         <wizard-step stepTitle="ข้อมูลยา">
@@ -98,8 +98,8 @@
                     <div class="row">
                         <div class="col-12 col-sm-6">
                             Thai FDA
-                            <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.initialThaiFDA" [addOnBlur]="true"
-                                [clearOnBlur]="true">
+                            <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.initialThaiFDA"
+                                [addOnBlur]="true" [clearOnBlur]="true">
                                 <tag-input-dropdown zIndex=3000 [autocompleteItems]="initialThaiFDA"></tag-input-dropdown>
                             </tag-input>
                         </div>
@@ -108,6 +108,13 @@
                             <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.usFDA" [addOnBlur]="true"
                                 [clearOnBlur]="true">
                                 <tag-input-dropdown zIndex=3000 [autocompleteItems]="usFDA"></tag-input-dropdown>
+                            </tag-input>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                            Imprint
+                            <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.imprint" [addOnBlur]="true"
+                                [clearOnBlur]="true">
+                                <tag-input-dropdown zIndex=3000 [autocompleteItems]="imprint"></tag-input-dropdown>
                             </tag-input>
                         </div>
                     </div>
@@ -120,10 +127,10 @@
                             </tag-input>
                         </div>
                         <div class="col-12 col-sm-4">
-                            Imprint
-                            <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.imprint" [addOnBlur]="true"
+                            รูปร่าง
+                            <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.shape" [addOnBlur]="true"
                                 [clearOnBlur]="true">
-                                <tag-input-dropdown zIndex=3000 [autocompleteItems]="imprint"></tag-input-dropdown>
+                                <tag-input-dropdown zIndex=3000 [autocompleteItems]="shape"></tag-input-dropdown>
                             </tag-input>
                         </div>
                         <div class="col-12 col-sm-4">
@@ -328,3 +335,90 @@
         </wizard-step>
     </wizard>
 </app-modal-animation>
+
+<app-modal-basic #modalDefault> 
+    <div class="app-modal-header">
+        <h4 class="modal-title">รายละเอียดยา</h4>
+        <button type="button" class="close basic-close" (click)="modalDefault.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="app-modal-body text-center">
+        <img src="{{userProPic}}" alt="{{userName}}" class="img-fluid img-thumbnail m-b-20">
+
+        <span class="text-primary d-block text-center">
+            <span *ngIf="userAge > 45">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star-half-o" aria-hidden="true"></i>
+            </span>
+            <span *ngIf="userAge <= 45 && userAge > 25">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                <i class="fa fa-star-o" aria-hidden="true"></i>
+            </span>
+            <span *ngIf="userAge <= 25">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star-o" aria-hidden="true"></i>
+                <i class="fa fa-star-o" aria-hidden="true"></i>
+                <i class="fa fa-star-o" aria-hidden="true"></i>
+            </span>
+        </span>
+        <table class="table table-striped text-left m-t-20">
+            <tr>
+                <td>ชื่อการค้า :</td>
+                <td>{{ tempView.brandName.value}</td>
+                <td>ชื่อสามัญยา :</td>
+                <!-- <td>{{ tempView.genericName[0].value }}</td> -->
+
+                <td>ชื่อการค้า :</td>
+                <!-- <td>{{ tempView.brandName[0].value }}</td> -->
+                <td>ชื่อสามัญยา :</td>
+                <!-- <td>{{ tempView.genericName[0].value }}</td> -->
+                <td>ชื่อการค้า :</td>
+                <!-- <td>{{ tempView.brandName[0].value }}</td> -->
+                <td>ชื่อสามัญยา :</td>
+                <!-- <td>{{ tempView.genericName[0].value }}</td> -->
+
+                <td>ชื่อการค้า :</td>
+                <!-- <td>{{ tempView.brandName[0].value }}</td> -->
+                <td>ชื่อสามัญยา :</td>
+                <!-- <td>{{ tempView.genericName[0].value }}</td> -->
+            </tr>
+            <tr>
+                <td>Email :</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Age :</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Position :</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Office :</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Mobile No. :</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Join At :</td>
+                <td></td>
+            </tr>
+        </table>
+
+    </div>
+    <div class="app-modal-footer">
+        <button type="button" class="btn btn-default waves-effect" (click)="modalDefault.hide()">Close</button>
+        <button type="button" class="btn btn-primary waves-effect waves-light ">Save changes</button>
+    </div>
+</app-modal-basic>
