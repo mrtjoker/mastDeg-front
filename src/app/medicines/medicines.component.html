@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="card-block">
-        <ngx-datatable #table class="data-table sortable resizeable sort-active sort-asc" [columnMode]="'force'" [scrollbarH]="true" [headerHeight]="50" [footerHeight]="50"
+        <ngx-datatable #table class="data-table resizeable" [columnMode]="'force'" [scrollbarH]="true" [headerHeight]="50" [footerHeight]="50"
             [rowHeight]="50" [limit]="10" [rows]='rowsFilter' [reorderable]="true">
             <ngx-datatable-column name="ชื่อการค้า">
                 <ng-template let-row="row" ngx-datatable-cell-template>
@@ -43,10 +43,10 @@
             </ngx-datatable-column>
             <ngx-datatable-column name="ดำเนินการ" [maxWidth]="100">
                 <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
-                    <a href="javascript:;" class="m-r-15 crm-action-view text-info" (click)="openMyModalData(row);modalDefault.show();">
+                    <a href="javascript:;" class="m-r-15 crm-action-view text-info" (click)="openMyModalData(row);openView('effect-12')">
                         <i class="fa fa-book"></i>
                     </a>
-                    <a href="javascript:;" class="m-r-15 crm-action-edit text-primary" (click)="update(row)">
+                    <a href="javascript:;" class="m-r-15 crm-action-edit text-primary" (click)="loadDataUpdate(row);openUpdate('effect-11')">
                         <i class="fa fa-edit"></i>
                     </a>
                     <a href="javascript:;" class="crm-action-delete text-danger" (click)="delete(row)">
@@ -58,8 +58,504 @@
     </div>
 </div>
 
-<app-modal-animation [modalID]="'effect-13'" [modalClass]="'md-effect-2'">
-    <h3 class="f-26">เพิ่มยา</h3>
+<!-- insert  -->
+<app-modal-animation [modalID]="'effect-13'" [modalClass]="'md-effect-13'">
+    <h3 class="f-26">เพิ่มยาชนิดใหม่</h3>
+    <wizard #wizard class="arc-wizard">
+        <wizard-step stepTitle="ข้อมูลยา">
+            <div class="centered-content">
+                <div class="card text-left">
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <a style="font-size: bold">ชื่อการค้า</a>
+                            <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.brandName" [addOnBlur]="true"
+                                [clearOnBlur]="true">
+                                <tag-input-dropdown zIndex=3000 [autocompleteItems]="brandName"></tag-input-dropdown>
+                            </tag-input>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            ชื่อสามัญยา
+                            <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.genericName" [addOnBlur]="true"
+                                [clearOnBlur]="true">
+                                <tag-input-dropdown zIndex=3000 [autocompleteItems]="genericName"></tag-input-dropdown>
+                            </tag-input>
+                        </div>
+                    </div>  
+                    MIMS Class
+                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.mimsClass" [addOnBlur]="true"
+                        [clearOnBlur]="true">
+                        <tag-input-dropdown zIndex=3000 [autocompleteItems]="mimsClass"></tag-input-dropdown>
+                    </tag-input>
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            ขนาดความแรง
+                            <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.presentation"
+                                [addOnBlur]="true" [clearOnBlur]="true">
+                                <tag-input-dropdown zIndex=3000 [autocompleteItems]="presentation"></tag-input-dropdown>
+                            </tag-input>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            ขนาดความแรงต่อบรรจุภัณฑ์
+                            <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.presentationPack"
+                                [addOnBlur]="true" [clearOnBlur]="true">
+                                <tag-input-dropdown zIndex=3000 [autocompleteItems]="presentationPack"></tag-input-dropdown>
+                            </tag-input>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            Thai FDA
+                            <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.initialThaiFDA"
+                                [addOnBlur]="true" [clearOnBlur]="true">
+                                <tag-input-dropdown zIndex=3000 [autocompleteItems]="initialThaiFDA"></tag-input-dropdown>
+                            </tag-input>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            US FDA
+                            <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.usFDA" [addOnBlur]="true"
+                                [clearOnBlur]="true">
+                                <tag-input-dropdown zIndex=3000 [autocompleteItems]="usFDA"></tag-input-dropdown>
+                            </tag-input>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            Imprint
+                            <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.imprint" [addOnBlur]="true"
+                                [clearOnBlur]="true">
+                                <tag-input-dropdown zIndex=3000 [autocompleteItems]="imprint"></tag-input-dropdown>
+                            </tag-input>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            สี
+                            <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.color" [addOnBlur]="true"
+                                [clearOnBlur]="true">
+                                <tag-input-dropdown zIndex=3000 [autocompleteItems]="color"></tag-input-dropdown>
+                            </tag-input>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            รูปแบบ
+                            <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.form" [addOnBlur]="true"
+                                [clearOnBlur]="true">
+                                <tag-input-dropdown zIndex=3000 [autocompleteItems]="form"></tag-input-dropdown>
+                            </tag-input>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            รูปร่าง
+                            <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.shape" [addOnBlur]="true"
+                                [clearOnBlur]="true">
+                                <tag-input-dropdown zIndex=3000 [autocompleteItems]="shape"></tag-input-dropdown>
+                            </tag-input>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            เลขทะเบียนตำรับยา
+                            <div class="input-group">
+                                <input type="text" name="registrationNumber" class="form-control" placeholder="เลขทะเบียนตำรับยา" [(ngModel)]="temp.registrationNumber">
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            เลขที่อนุญาต (เลข อย.)
+                            <div class="input-group">
+                                <input type="text" name="numberFD" class="form-control" placeholder="เลขที่อนุญาต (เลข อย.)" [(ngModel)]="temp.numberFD">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-group mt-10">
+                    <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
+                </div>
+            </div>
+        </wizard-step>
+        <wizard-step stepTitle="ข้อบ่งใช้">
+            <div class="centered-content">
+                <div class="text-left">
+                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.indications" [addOnBlur]="true"
+                        [clearOnBlur]="true">
+                        <tag-input-dropdown zIndex=3000 [autocompleteItems]="indications"></tag-input-dropdown>
+                    </tag-input>
+                </div>
+                <br>
+                <div class="btn-group mt-10">
+                    <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
+                    <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
+                </div>
+            </div>
+        </wizard-step>
+        <wizard-step stepTitle="ขนาดที่ให้">
+            <div class="centered-content">
+                <div class="text-left">
+                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.dosage" [addOnBlur]="true" [clearOnBlur]="true">
+                        <tag-input-dropdown zIndex=3000 [autocompleteItems]="dosage"></tag-input-dropdown>
+                    </tag-input>
+                </div>
+                <br>
+                <div class="btn-group mt-10">
+                    <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
+                    <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
+                </div>
+            </div>
+        </wizard-step>
+        <wizard-step stepTitle="คำแนะนำ">
+            <div class="centered-content">
+                <div class="text-left">
+                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.advice" [addOnBlur]="true" [clearOnBlur]="true">
+                        <tag-input-dropdown zIndex=3000 [autocompleteItems]="advice"></tag-input-dropdown>
+                    </tag-input>
+                </div>
+                <br>
+                <div class="btn-group mt-10">
+                    <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
+                    <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
+                </div>
+            </div>
+        </wizard-step>
+        <wizard-step stepTitle="ข้อควรระวัง">
+            <div class="centered-content">
+                <div class="text-left">
+                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.contraindications" [addOnBlur]="true"
+                        [clearOnBlur]="true">
+                        <tag-input-dropdown zIndex=3000 [autocompleteItems]="contraindications"></tag-input-dropdown>
+                    </tag-input>
+                </div>
+                <br>
+                <div class="btn-group mt-10">
+                    <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
+                    <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
+                </div>
+            </div>
+        </wizard-step>
+        <wizard-step stepTitle="คำเตือน">
+            <div class="centered-content">
+                <div class="text-left">
+                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.warning" [addOnBlur]="true" [clearOnBlur]="true">
+                        <tag-input-dropdown zIndex=3000 [autocompleteItems]="warning"></tag-input-dropdown>
+                    </tag-input>
+                </div>
+                <br>
+                <div class="btn-group mt-10">
+                    <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
+                    <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
+                </div>
+            </div>
+        </wizard-step>
+        <wizard-step stepTitle="อาการไม่พึงประสงค์">
+            <div class="centered-content">
+                <div class="text-left">
+                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.adverseReactions" [addOnBlur]="true"
+                        [clearOnBlur]="true">
+                        <tag-input-dropdown zIndex=3000 [autocompleteItems]="adverseReactions"></tag-input-dropdown>
+                    </tag-input>
+                </div>
+                <br>
+                <div class="btn-group mt-10">
+                    <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
+                    <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
+                </div>
+            </div>
+        </wizard-step>
+        <wizard-step stepTitle="อันตรกิริยาระหว่างยา">
+            <div class="centered-content">
+                <div class="text-left">
+                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.interactions" [addOnBlur]="true"
+                        [clearOnBlur]="true">
+                        <tag-input-dropdown zIndex=3000 [autocompleteItems]="interactions"></tag-input-dropdown>
+                    </tag-input>
+                </div>
+                <br>
+                <div class="btn-group mt-10">
+                    <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
+                    <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
+                </div>
+            </div>
+        </wizard-step>
+        <wizard-step stepTitle="ข้อมูลบริษัท">
+            <div class="centered-content">
+                <div class="text-left">
+                    บริษัทผู้รับอนุญาต
+                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.allowFacturer"
+                        [addOnBlur]="true" [clearOnBlur]="true">
+                        <tag-input-dropdown zIndex=3000 [autocompleteItems]="factory"></tag-input-dropdown>
+                    </tag-input>
+                    บริษัทผู้ผลิต
+                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.manuFacturer"
+                        [addOnBlur]="true" [clearOnBlur]="true">
+                        <tag-input-dropdown zIndex=3000 [autocompleteItems]="factory"></tag-input-dropdown>
+                    </tag-input>
+                    บริษัทผู้จำหน่าย
+                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.distributor" [addOnBlur]="true"
+                        [clearOnBlur]="true">
+                        <tag-input-dropdown zIndex=3000 [autocompleteItems]="factory"></tag-input-dropdown>
+                    </tag-input>
+                    Marketer
+                    <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.marketer" [addOnBlur]="true"
+                        [clearOnBlur]="true">
+                        <tag-input-dropdown zIndex=3000 [autocompleteItems]="factory"></tag-input-dropdown>
+                    </tag-input>
+                </div>
+                <div class="btn-group mt-10">
+                    <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
+                    <button type="button" class="btn btn-primary btn-sm" (click)="insertVal()" nextStep>บันทึก</button>
+                </div>
+            </div>
+        </wizard-step>
+        <wizard-step stepTitle="เสร็จสิ้น">
+            <div class="centered-content">
+                <div>
+                    <h4>บันทึกข้อมูลสำเร็จ</h4>
+                </div>
+            </div>
+        </wizard-step>
+    </wizard>
+    <button (click)="closeMyModal($event)" aria-label="Close" class="md-close-btn">
+        <i class="icofont icofont-ui-close"></i>
+    </button>
+</app-modal-animation>
+<!-- show detail -->
+<app-modal-animation [modalID]="'effect-12'" [modalClass]="'md-effect-9'">
+    <h3 class="f-26">รายละเอียดยา</h3>
+    <wizard #wizard class="arc-wizard">
+        <wizard-step stepTitle="ข้อมูลยา">
+            
+                <div class="row">
+                    <div class="col-12 col-sm-6">
+                        <a style="font-weight: bold">ชื่อการค้า:</a> <label>{{tempView.brandName}}</label>
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <a style="font-weight: bold">ชื่อสามัญยา:</a> {{tempView.genericName}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-6">
+                        <a style="font-weight: bold">MIMS Class:</a> {{tempView.mimsClass}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-6">
+                        <a style="font-weight: bold">เลขทะเบียนตำรับยา:</a> {{tempView.registrationNumber}}
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <a style="font-weight: bold">เลขที่อนุญาต:</a> {{tempView.numberFD}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-6">
+                        <a style="font-weight: bold">ขนาดความแรง:</a> {{tempView.presentation}}
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <a style="font-weight: bold">ขนาดความแรงต่อผลิตภัณฑ์:</a> {{tempView.presentationPack}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-6">
+                        <a style="font-weight: bold">Thai FDA:</a> {{tempView.initialThaiFDA}}
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <a style="font-weight: bold">US FDA:</a> {{tempView.usFDA}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-6">
+                        <a style="font-weight: bold">รูปแบบ:</a> {{tempView.form}}
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <a style="font-weight: bold">รูปร่าง:</a> {{tempView.shape}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-6">
+                        <a style="font-weight: bold">Imprint:</a> {{tempView.imprint}}
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <a style="font-weight: bold">สี:</a> {{tempView.color}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-6">
+                        <a style="font-weight: bold">บริษัทผู้รับอนุญาต:</a> {{tempView.allowFacturer}}
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <a style="font-weight: bold">บริษัทผู้ผลิต:</a> {{tempView.manuFacturer}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-6">
+                        <a style="font-weight: bold">บริษัทผู้จำหน่าย:</a> {{tempView.distributor}}
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <a style="font-weight: bold">Marketer:</a> {{tempView.marketer}}
+                    </div>
+                </div>
+                <br>
+                <div class="centered-content">
+                    <div class="btn-group mt-10">
+                        <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
+                    </div>
+                </div>
+            
+        </wizard-step>
+        <wizard-step stepTitle="ข้อบ่งใช้">
+            <div class="card">
+                <!-- <ngx-datatable #table class="data-table resizeable" [columnMode]="'force'" [scrollbarH]="true" [headerHeight]="50" [footerHeight]="50"
+                    [rowHeight]="50" [limit]="3" [rows]='tempView.indications' [reorderable]="true">
+                    <ngx-datatable-column name="ข้อบ่งใช้">
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.value}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                </ngx-datatable> -->
+
+
+                <table class="table" width="600" height="300" scrolling="yes">
+                    <thead>
+                        <tr>
+                            <th>ข้อบ่งใช้</th>
+                        </tr>
+                    </thead>
+                    <tbody>1
+                        <div *ngFor="let data of tempView.indications">
+                            <tr>
+                                <td>{{data.value}}</td>
+                            </tr>
+                        </div>
+                    </tbody>
+                </table>
+
+
+                <br>
+                <div class="centered-content">
+                    <div class="btn-group mt-10">
+                        <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
+                        <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
+                    </div>
+                </div>
+            </div>
+        </wizard-step>
+        <wizard-step stepTitle="ขนาดที่ให้">
+            <div class="card">
+                <ngx-datatable #table class="data-table resizeable" [columnMode]="'force'" [scrollbarH]="true" [headerHeight]="50" [footerHeight]="50"
+                    [rowHeight]="50" [limit]="3" [rows]='tempView.dosage' [reorderable]="true">
+                    <ngx-datatable-column name="ขนาดที่ให้">
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.value}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                </ngx-datatable>
+                <br>
+                <div class="centered-content">
+                    <div class="btn-group mt-10">
+                        <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
+                        <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
+                    </div>
+                </div>
+            </div>
+        </wizard-step>
+        <wizard-step stepTitle="คำแนะนำ">
+            <div class="card">
+                <ngx-datatable #table class="data-table resizeable" [columnMode]="'force'" [scrollbarH]="true" [headerHeight]="50" [footerHeight]="50"
+                    [rowHeight]="50" [limit]="3" [rows]='tempView.advice' [reorderable]="true">
+                    <ngx-datatable-column name="คำแนะนำ">
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.value}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                </ngx-datatable>
+                <br>
+                <div class="centered-content">
+                    <div class="btn-group mt-10">
+                        <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
+                        <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
+                    </div>
+                </div>
+            </div>
+        </wizard-step>
+        <wizard-step stepTitle="ข้อควรระวัง">
+            <div class="card">
+                <ngx-datatable #table class="data-table resizeable" [columnMode]="'force'" [scrollbarH]="true" [headerHeight]="50" [footerHeight]="50"
+                    [rowHeight]="50" [limit]="3" [rows]='tempView.contraindications' [reorderable]="true">
+                    <ngx-datatable-column name="ข้อควรระวัง">
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.value}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                </ngx-datatable>
+                <br>
+                <div class="centered-content">
+                    <div class="btn-group mt-10">
+                        <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
+                        <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
+                    </div>
+                </div>
+            </div>
+        </wizard-step>
+        <wizard-step stepTitle="คำเตือน">
+            <div class="card">
+                <ngx-datatable #table class="data-table resizeable" [columnMode]="'force'" [scrollbarH]="true" [headerHeight]="50" [footerHeight]="50"
+                    [rowHeight]="50" [limit]="3" [rows]='tempView.warning' [reorderable]="true">
+                    <ngx-datatable-column name="คำเตือน">
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.value}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                </ngx-datatable>
+                <br>
+                <div class="centered-content">
+                    <div class="btn-group mt-10">
+                        <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
+                        <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
+                    </div>
+                </div>
+            </div>
+        </wizard-step>
+        <wizard-step stepTitle="อาการไม่พึงประสงค์">
+            <div class="card">
+                <ngx-datatable #table class="data-table resizeable" [columnMode]="'force'" [scrollbarH]="true" [headerHeight]="50" [footerHeight]="50"
+                    [rowHeight]="50" [limit]="3" [rows]='tempView.adverseReactions' [reorderable]="true">
+                    <ngx-datatable-column name="อาการไม่พึงประสงค์">
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.value}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                </ngx-datatable>
+                <br>
+                <div class="centered-content">
+                    <div class="btn-group mt-10">
+                        <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
+                        <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
+                    </div>
+                </div>
+            </div>
+        </wizard-step>
+        <wizard-step stepTitle="อันตรกิริยาระหว่างยา">
+            <div class="card">
+                <ngx-datatable #table class="data-table resizeable" [columnMode]="'force'" [scrollbarH]="true" [headerHeight]="50" [footerHeight]="50"
+                    [rowHeight]="50" [limit]="3" [rows]='tempView.interactions' [reorderable]="true">
+                    <ngx-datatable-column name="อันตรกิริยาระหว่างยา">
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.value}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                </ngx-datatable>
+                <br>
+                <div class="centered-content">
+                    <div class="btn-group mt-10">
+                        <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
+                        <button type="button" class="btn btn-primary btn-sm" resetWizard>ปิด</button>
+                    </div>
+                </div>
+            </div>
+        </wizard-step>
+    </wizard>
+    <button (click)="closeMyModal($event)" aria-label="Close" class="md-close-btn">
+        <i class="icofont icofont-ui-close"></i>
+    </button>
+</app-modal-animation>
+<!-- update -->
+<app-modal-animation [modalID]="'effect-11'" [modalClass]="'md-effect-8'">
+    <h3 class="f-26">เพิ่มยาชนิดใหม่</h3>
     <wizard #wizard class="arc-wizard">
         <wizard-step stepTitle="ข้อมูลยา">
             <div class="centered-content">
@@ -156,9 +652,6 @@
                         </div>
                     </div>
                 </div>
-                <button (click)="closeMyModal($event)" aria-label="Close" class="md-close-btn">
-                    <i class="icofont icofont-ui-close"></i>
-                </button>
                 <div class="btn-group mt-10">
                     <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
                 </div>
@@ -173,9 +666,6 @@
                     </tag-input>
                 </div>
                 <br>
-                <button (click)="closeMyModal($event)" aria-label="Close" class="md-close-btn">
-                    <i class="icofont icofont -ui-close"></i>
-                </button>
                 <div class="btn-group mt-10">
                     <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
                     <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
@@ -190,9 +680,6 @@
                     </tag-input>
                 </div>
                 <br>
-                <button (click)="closeMyModal($event)" aria-label="Close" class="md-close-btn">
-                    <i class="icofont icofont-ui-close"></i>
-                </button>
                 <div class="btn-group mt-10">
                     <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
                     <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
@@ -207,9 +694,6 @@
                     </tag-input>
                 </div>
                 <br>
-                <button (click)="closeMyModal($event)" aria-label="Close" class="md-close-btn">
-                    <i class="icofont icofont-ui-close"></i>
-                </button>
                 <div class="btn-group mt-10">
                     <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
                     <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
@@ -225,9 +709,6 @@
                     </tag-input>
                 </div>
                 <br>
-                <button (click)="closeMyModal($event)" aria-label="Close" class="md-close-btn">
-                    <i class="icofont icofont-ui-close"></i>
-                </button>
                 <div class="btn-group mt-10">
                     <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
                     <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
@@ -242,9 +723,6 @@
                     </tag-input>
                 </div>
                 <br>
-                <button (click)="closeMyModal($event)" aria-label="Close" class="md-close-btn">
-                    <i class="icofont icofont-ui-close"></i>
-                </button>
                 <div class="btn-group mt-10">
                     <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
                     <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
@@ -260,9 +738,6 @@
                     </tag-input>
                 </div>
                 <br>
-                <button (click)="closeMyModal($event)" aria-label="Close" class="md-close-btn">
-                    <i class="icofont icofont-ui-close"></i>
-                </button>
                 <div class="btn-group mt-10">
                     <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
                     <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
@@ -278,9 +753,6 @@
                     </tag-input>
                 </div>
                 <br>
-                <button (click)="closeMyModal($event)" aria-label="Close" class="md-close-btn">
-                    <i class="icofont icofont-ui-close"></i>
-                </button>
                 <div class="btn-group mt-10">
                     <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
                     <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
@@ -311,114 +783,21 @@
                         <tag-input-dropdown zIndex=3000 [autocompleteItems]="factory"></tag-input-dropdown>
                     </tag-input>
                 </div>
-                <button (click)="closeMyModal($event)" aria-label="Close" class="md-close-btn">
-                    <i class="icofont icofont-ui-close"></i>
-                </button>
-
                 <div class="btn-group mt-10">
                     <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
-                    <button type="button" class="btn btn-primary btn-sm" (click)="insertVal()" nextStep>ต่อไป</button>
+                    <button type="button" class="btn btn-primary btn-sm" (click)="update()" nextStep>บันทึก</button>
                 </div>
             </div>
         </wizard-step>
-        <wizard-step stepTitle="ยืนยัน">
+        <wizard-step stepTitle="เสร็จสิ้น">
             <div class="centered-content">
                 <div>
-                    <h4>ยืนยันการบันทึกข้อมูล</h4>
-                </div>
-
-                <div class="btn-group mt-10">
-                    <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
-                    <button type="button" class="btn btn-primary btn-sm" (click)="save($event)">บันทึก</button>
+                    <h4>บันทึกข้อมูลสำเร็จ</h4>
                 </div>
             </div>
         </wizard-step>
     </wizard>
+    <button (click)="closeMyModal($event)" aria-label="Close" class="md-close-btn">
+        <i class="icofont icofont-ui-close"></i>
+    </button>
 </app-modal-animation>
-
-<app-modal-basic #modalDefault> 
-    <div class="app-modal-header">
-        <h4 class="modal-title">รายละเอียดยา</h4>
-        <button type="button" class="close basic-close" (click)="modalDefault.hide()">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="app-modal-body text-center">
-        <img src="{{userProPic}}" alt="{{userName}}" class="img-fluid img-thumbnail m-b-20">
-
-        <span class="text-primary d-block text-center">
-            <span *ngIf="userAge > 45">
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star-half-o" aria-hidden="true"></i>
-            </span>
-            <span *ngIf="userAge <= 45 && userAge > 25">
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                <i class="fa fa-star-o" aria-hidden="true"></i>
-            </span>
-            <span *ngIf="userAge <= 25">
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star-o" aria-hidden="true"></i>
-                <i class="fa fa-star-o" aria-hidden="true"></i>
-                <i class="fa fa-star-o" aria-hidden="true"></i>
-            </span>
-        </span>
-        <table class="table table-striped text-left m-t-20">
-            <tr>
-                <td>ชื่อการค้า :</td>
-                <td>{{ tempView.brandName.value}</td>
-                <td>ชื่อสามัญยา :</td>
-                <!-- <td>{{ tempView.genericName[0].value }}</td> -->
-
-                <td>ชื่อการค้า :</td>
-                <!-- <td>{{ tempView.brandName[0].value }}</td> -->
-                <td>ชื่อสามัญยา :</td>
-                <!-- <td>{{ tempView.genericName[0].value }}</td> -->
-                <td>ชื่อการค้า :</td>
-                <!-- <td>{{ tempView.brandName[0].value }}</td> -->
-                <td>ชื่อสามัญยา :</td>
-                <!-- <td>{{ tempView.genericName[0].value }}</td> -->
-
-                <td>ชื่อการค้า :</td>
-                <!-- <td>{{ tempView.brandName[0].value }}</td> -->
-                <td>ชื่อสามัญยา :</td>
-                <!-- <td>{{ tempView.genericName[0].value }}</td> -->
-            </tr>
-            <tr>
-                <td>Email :</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Age :</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Position :</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Office :</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Mobile No. :</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Join At :</td>
-                <td></td>
-            </tr>
-        </table>
-
-    </div>
-    <div class="app-modal-footer">
-        <button type="button" class="btn btn-default waves-effect" (click)="modalDefault.hide()">Close</button>
-        <button type="button" class="btn btn-primary waves-effect waves-light ">Save changes</button>
-    </div>
-</app-modal-basic>

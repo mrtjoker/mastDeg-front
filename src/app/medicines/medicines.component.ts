@@ -90,6 +90,7 @@ export class MedicinesComponent implements OnInit {
     manuFacturer: '',
     distributor: '',
     marketer: '',
+    _id: ''
   };
   public tempView = {
     adverseReactions: '',
@@ -119,7 +120,8 @@ export class MedicinesComponent implements OnInit {
     manuFacturer: '',
     distributor: '',
     marketer: '',
-  }
+  };
+
   constructor(
     private brandNameService: BrandNameService,
     private genericNameService: GenericNameService,
@@ -199,7 +201,7 @@ export class MedicinesComponent implements OnInit {
       result.forEach(element => { this.interactions.push(element.interactions); });
     });
     this.factoryService.getAllFactory().subscribe((result) => {
-      result.forEach(element => { this.factory.push(element.factory) });
+      result.forEach(element => { this.factory.push(element.factory); });
     });
     this.medicinesService.getAllMedicines().subscribe((results) => {
       this.tempFilter = [...results];
@@ -216,60 +218,41 @@ export class MedicinesComponent implements OnInit {
     this.table.offset = 0;
   }
 
-  insert() {
-    this.tmp = { medicine: this.value };
-    this.value = '';
-    this.medicinesService.addMedicines(this.tmp).pipe(
-      mergeMap(() => this.medicinesService.getAllMedicines()))
-      .subscribe((results) => {
-        this.tempFilter = [...results];
-        this.rowsFilter = results;
-      });
-  }
-
-  update(value) {
-    this.medicinesService.updateMedicines(value._id, value).pipe(
-      mergeMap(() => this.medicinesService.getAllMedicines()))
-      .subscribe((results) => {
-        this.tempFilter = [...results];
-        this.rowsFilter = results;
-      });
-  }
-
-  delete(value) {
-    this.medicinesService.deleteMedicines(value._id).pipe(
-      mergeMap(() => this.medicinesService.getAllMedicines()))
-      .subscribe((results) => {
-        this.tempFilter = [...results];
-        this.rowsFilter = results;
-      });
-  }
-
-  openMyModal(event) {
-    document.querySelector('#' + event).classList.add('md-show');
-  }
-
-  openMyModalData(data) {
-    console.log(data)
-    this.tempView = data;
-  }
-
-  closeMyModal(event) {
-    ((event.target.parentElement.parentElement).parentElement).classList.remove('md-show');
-  }
-
-  save(event) {
-    ((event.target.parentElement.parentElement).parentElement).classList.remove('md-show');
-  }
-
-  insertVal() {
-    this.medicinesService.addMedicines(this.temp).pipe(
-      mergeMap(() => this.medicinesService.getAllMedicines()))
-      .subscribe((results) => {
-        this.tempFilter = [...results];
-        this.rowsFilter = results;
-      });
+  clearTemp() {
     this.temp = {
+      adverseReactions: '',
+      advice: '',
+      color: '',
+      colorCode: '',
+      brandName: '',
+      contraindications: '',
+      dosage: '',
+      form: '',
+      shape: '',
+      genericName: '',
+      imprint: '',
+      indications: '',
+      interactions: '',
+      mimsClass: '',
+      presentation: '',
+      presentationPack: '',
+      initialThaiFDA: '',
+      thaiFDAEN: '',
+      thaiFDATH: '',
+      usFDA: '',
+      warning: '',
+      registrationNumber: '',
+      numberFD: '',
+      allowFacturer: '',
+      manuFacturer: '',
+      distributor: '',
+      marketer: '',
+      _id: ''
+    };
+  }
+
+  clearTempView() {
+    this.tempView = {
       adverseReactions: '',
       advice: '',
       color: '',
@@ -299,4 +282,88 @@ export class MedicinesComponent implements OnInit {
       marketer: '',
     };
   }
+
+  openMyModal(event) {
+    document.querySelector('#' + event).classList.add('md-show');
+  }
+
+  closeMyModal(event) {
+    ((event.target.parentElement.parentElement).parentElement).classList.remove('md-show');
+  }
+
+  insertVal() {
+    this.medicinesService.addMedicines(this.temp).pipe(
+      mergeMap(() => this.medicinesService.getAllMedicines()))
+      .subscribe((results) => {
+        this.tempFilter = [...results];
+        this.rowsFilter = results;
+      });
+    this.clearTemp();
+  }
+
+  openView(event) {
+    document.querySelector('#' + event).classList.add('md-show');
+  }
+
+  openMyModalData(data) {
+    this.clearTempView();
+    this.tempView = {
+      adverseReactions: data.adverseReactions,
+      advice: data.advice,
+      color: data.color[0].value,
+      colorCode: '',
+      brandName: data.brandName[0].value,
+      contraindications: data.contraindications,
+      dosage: data.dosage,
+      form: data.form[0].value,
+      shape: data.shape[0].value,
+      genericName: data.genericName[0].value,
+      imprint: data.imprint[0].value,
+      indications: data.indications,
+      interactions: data.interactions,
+      mimsClass: data.mimsClass[0].value,
+      presentation: data.presentation[0].value,
+      presentationPack: data.presentationPack[0].value,
+      initialThaiFDA: data.initialThaiFDA[0].value,
+      thaiFDAEN: '',
+      thaiFDATH: '',
+      usFDA: data.usFDA[0].value,
+      warning: data.warning,
+      registrationNumber: data.registrationNumber,
+      numberFD: data.numberFD,
+      allowFacturer: data.allowFacturer[0].value,
+      manuFacturer: data.manuFacturer[0].value,
+      distributor: data.distributor[0].value,
+      marketer: data.marketer[0].value,
+    };
+  }
+
+  openUpdate(event) {
+    document.querySelector('#' + event).classList.add('md-show');
+  }
+
+  loadDataUpdate(value) {
+    this.clearTemp();
+    this.temp = value;
+  }
+
+  update() {
+    this.medicinesService.updateMedicines(this.temp._id, this.temp).pipe(
+      mergeMap(() => this.medicinesService.getAllMedicines()))
+      .subscribe((results) => {
+        this.tempFilter = [...results];
+      });
+      this.clearTemp();
+  }
+
+  delete(value) {
+    this.medicinesService.deleteMedicines(value._id).pipe(
+      mergeMap(() => this.medicinesService.getAllMedicines()))
+      .subscribe((results) => {
+        this.tempFilter = [...results];
+        this.rowsFilter = results;
+      });
+  }
+
+
 }

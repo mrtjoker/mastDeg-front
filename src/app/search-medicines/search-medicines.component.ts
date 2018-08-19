@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { IOption } from 'ng-select';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/map';
@@ -26,8 +26,13 @@ import { AdverseReactionsService } from '../shared/service/adverse-reactions.ser
 })
 export class SearchMedicinesComponent implements OnInit {
 
+
+  @Input('modalDefault') modalDefault: any;
+
   constructor() { }
 
   ngOnInit() {
+  
   }
+
 }
