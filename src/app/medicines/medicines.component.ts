@@ -250,8 +250,36 @@ export class MedicinesComponent implements OnInit {
   }
 
   openMyModalData(data) {
-    console.log(data)
-    this.tempView = data;
+    console.log( data)
+    this.tempView = {
+      adverseReactions: data.adverseReactions,
+      advice: data.advice,
+      color: data.color[0].value,
+      colorCode: '',
+      brandName: data.brandName[0].value,
+      contraindications: '',
+      dosage: '',
+      form: data.form[0].value,
+      shape: data.shape[0].value,
+      genericName: data.genericName[0].value,
+      imprint: data.imprint[0].value,
+      indications: '',
+      interactions: '',
+      mimsClass: data.mimsClass[0].value,
+      presentation: data.presentation[0].value,
+      presentationPack: data.presentationPack[0].value,
+      initialThaiFDA: data.initialThaiFDA[0].value,
+      thaiFDAEN: '',
+      thaiFDATH: '',
+      usFDA: data.usFDA[0].value,
+      warning: '',
+      registrationNumber: data.registrationNumber,
+      numberFD: data.numberFD,
+      allowFacturer: '',
+      manuFacturer: '',
+      distributor: '',
+      marketer: '',
+    }
   }
 
   closeMyModal(event) {
