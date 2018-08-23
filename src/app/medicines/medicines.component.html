@@ -80,7 +80,7 @@
                                 <tag-input-dropdown zIndex=3000 [autocompleteItems]="genericName"></tag-input-dropdown>
                             </tag-input>
                         </div>
-                    </div>  
+                    </div>
                     MIMS Class
                     <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [maxItems]="1" [(ngModel)]="temp.mimsClass" [addOnBlur]="true"
                         [clearOnBlur]="true">
@@ -317,85 +317,84 @@
 <!-- show detail -->
 <app-modal-animation [modalID]="'effect-12'" [modalClass]="'md-effect-9'">
     <h3 class="f-26">รายละเอียดยา</h3>
-    <wizard #wizard class="arc-wizard">
+    <wizard #wizard class="arc-wizard" [defaultStepIndex]>
         <wizard-step stepTitle="ข้อมูลยา">
-            
-                <div class="row">
-                    <div class="col-12 col-sm-6">
-                        <a style="font-weight: bold">ชื่อการค้า:</a> <label>{{tempView.brandName}}</label>
-                    </div>
-                    <div class="col-12 col-sm-6">
-                        <a style="font-weight: bold">ชื่อสามัญยา:</a> {{tempView.genericName}}
-                    </div>
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                    <a style="font-weight: bold">ชื่อการค้า:</a> <label>{{tempView.brandName}}</label>
                 </div>
-                <div class="row">
-                    <div class="col-12 col-sm-6">
-                        <a style="font-weight: bold">MIMS Class:</a> {{tempView.mimsClass}}
-                    </div>
+                <div class="col-12 col-sm-6">
+                    <a style="font-weight: bold">ชื่อสามัญยา:</a> {{tempView.genericName}}
                 </div>
-                <div class="row">
-                    <div class="col-12 col-sm-6">
-                        <a style="font-weight: bold">เลขทะเบียนตำรับยา:</a> {{tempView.registrationNumber}}
-                    </div>
-                    <div class="col-12 col-sm-6">
-                        <a style="font-weight: bold">เลขที่อนุญาต:</a> {{tempView.numberFD}}
-                    </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                    <a style="font-weight: bold">MIMS Class:</a> {{tempView.mimsClass}}
                 </div>
-                <div class="row">
-                    <div class="col-12 col-sm-6">
-                        <a style="font-weight: bold">ขนาดความแรง:</a> {{tempView.presentation}}
-                    </div>
-                    <div class="col-12 col-sm-6">
-                        <a style="font-weight: bold">ขนาดความแรงต่อผลิตภัณฑ์:</a> {{tempView.presentationPack}}
-                    </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                    <a style="font-weight: bold">เลขทะเบียนตำรับยา:</a> {{tempView.registrationNumber}}
                 </div>
-                <div class="row">
-                    <div class="col-12 col-sm-6">
-                        <a style="font-weight: bold">Thai FDA:</a> {{tempView.initialThaiFDA}}
-                    </div>
-                    <div class="col-12 col-sm-6">
-                        <a style="font-weight: bold">US FDA:</a> {{tempView.usFDA}}
-                    </div>
+                <div class="col-12 col-sm-6">
+                    <a style="font-weight: bold">เลขที่อนุญาต:</a> {{tempView.numberFD}}
                 </div>
-                <div class="row">
-                    <div class="col-12 col-sm-6">
-                        <a style="font-weight: bold">รูปแบบ:</a> {{tempView.form}}
-                    </div>
-                    <div class="col-12 col-sm-6">
-                        <a style="font-weight: bold">รูปร่าง:</a> {{tempView.shape}}
-                    </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                    <a style="font-weight: bold">ขนาดความแรง:</a> {{tempView.presentation}}
                 </div>
-                <div class="row">
-                    <div class="col-12 col-sm-6">
-                        <a style="font-weight: bold">Imprint:</a> {{tempView.imprint}}
-                    </div>
-                    <div class="col-12 col-sm-6">
-                        <a style="font-weight: bold">สี:</a> {{tempView.color}}
-                    </div>
+                <div class="col-12 col-sm-6">
+                    <a style="font-weight: bold">ขนาดความแรงต่อผลิตภัณฑ์:</a> {{tempView.presentationPack}}
                 </div>
-                <div class="row">
-                    <div class="col-12 col-sm-6">
-                        <a style="font-weight: bold">บริษัทผู้รับอนุญาต:</a> {{tempView.allowFacturer}}
-                    </div>
-                    <div class="col-12 col-sm-6">
-                        <a style="font-weight: bold">บริษัทผู้ผลิต:</a> {{tempView.manuFacturer}}
-                    </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                    <a style="font-weight: bold">Thai FDA:</a> {{tempView.initialThaiFDA}}
                 </div>
-                <div class="row">
-                    <div class="col-12 col-sm-6">
-                        <a style="font-weight: bold">บริษัทผู้จำหน่าย:</a> {{tempView.distributor}}
-                    </div>
-                    <div class="col-12 col-sm-6">
-                        <a style="font-weight: bold">Marketer:</a> {{tempView.marketer}}
-                    </div>
+                <div class="col-12 col-sm-6">
+                    <a style="font-weight: bold">US FDA:</a> {{tempView.usFDA}}
                 </div>
-                <br>
-                <div class="centered-content">
-                    <div class="btn-group mt-10">
-                        <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
-                    </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                    <a style="font-weight: bold">รูปแบบ:</a> {{tempView.form}}
                 </div>
-            
+                <div class="col-12 col-sm-6">
+                    <a style="font-weight: bold">รูปร่าง:</a> {{tempView.shape}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                    <a style="font-weight: bold">Imprint:</a> {{tempView.imprint}}
+                </div>
+                <div class="col-12 col-sm-6">
+                    <a style="font-weight: bold">สี:</a> {{tempView.color}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                    <a style="font-weight: bold">บริษัทผู้รับอนุญาต:</a> {{tempView.allowFacturer}}
+                </div>
+                <div class="col-12 col-sm-6">
+                    <a style="font-weight: bold">บริษัทผู้ผลิต:</a> {{tempView.manuFacturer}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                    <a style="font-weight: bold">บริษัทผู้จำหน่าย:</a> {{tempView.distributor}}
+                </div>
+                <div class="col-12 col-sm-6">
+                    <a style="font-weight: bold">Marketer:</a> {{tempView.marketer}}
+                </div>
+            </div>
+            <br>
+            <div class="centered-content">
+                <div class="btn-group mt-10">
+                    <button type="button" class="btn btn-primary btn-sm" nextStep>ต่อไป</button>
+                </div>
+            </div>
+
         </wizard-step>
         <wizard-step stepTitle="ข้อบ่งใช้">
             <div class="card">
@@ -543,13 +542,12 @@
                 <div class="centered-content">
                     <div class="btn-group mt-10">
                         <button type="button" class="btn btn-secondary btn-sm" previousStep>กลับ</button>
-                        <button type="button" class="btn btn-primary btn-sm" resetWizard>ปิด</button>
                     </div>
                 </div>
             </div>
         </wizard-step>
     </wizard>
-    <button (click)="closeMyModal($event)" aria-label="Close" class="md-close-btn">
+    <button aria-label="Close" class="md-close-btn" (click)="closeMyModal($event)">
         <i class="icofont icofont-ui-close"></i>
     </button>
 </app-modal-animation>
