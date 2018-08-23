@@ -24,5 +24,7 @@ export class MedicinesService {
     deleteMedicines(id: string): Observable<any> {
         return this.apiService.delete('medicines/' + id);
     }
-    
+    searchMedicines(data){
+        return this.apiService.put('medicineSearch', data);
+    }
 }

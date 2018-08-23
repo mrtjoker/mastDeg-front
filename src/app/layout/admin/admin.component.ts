@@ -174,12 +174,12 @@ export class AdminComponent implements OnInit, OnDestroy {
     this.verticalNavType = 'expanded';
     this.verticalEffect = 'shrink';
     this.vnavigationView = 'view1';
-    this.freamType = 'theme3';
+    this.freamType = 'theme4';
     this.sidebarImg = 'false';
     this.sidebarImgType = 'img1';
     this.layoutType = 'light'; // light(default) dark(dark)
 
-    this.headerTheme = 'theme3'; // theme3(default)
+    this.headerTheme = 'theme4'; // theme4(default)
     this.pcodedHeaderPosition = 'fixed';
 
     this.headerFixedTop = 'auto';
@@ -196,10 +196,10 @@ export class AdminComponent implements OnInit, OnDestroy {
 
     this.toggleOn = true;
     this.toggleIcon = 'icon-toggle-right';
-    this.navBarTheme = 'themelight1'; // themelight1(default) theme3(dark)
-    this.activeItemTheme = 'theme3';
+    this.navBarTheme = 'themelight1'; // themelight1(default) theme4(dark)
+    this.activeItemTheme = 'theme4';
     this.pcodedSidebarPosition = 'fixed';
-    this.menuTitleTheme = 'theme3'; // theme3(default) theme30(dark)
+    this.menuTitleTheme = 'theme4'; // theme4(default) theme40(dark)
     this.dropDownIcon = 'style1';
     this.subItemIcon = 'style1';
 
@@ -230,7 +230,7 @@ export class AdminComponent implements OnInit, OnDestroy {
     this.setNavBarTheme('themelight1');*/
 
     // dark-light theme
-    /*this.setNavBarTheme('theme3');*/
+    /*this.setNavBarTheme('theme4');*/
 
     // box layout
     /*this.setHeaderPosition();
@@ -239,7 +239,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.setBackgroundPattern('theme3');
+    this.setBackgroundPattern('theme4');
   }
 
   onResize(event) {
@@ -433,44 +433,44 @@ export class AdminComponent implements OnInit, OnDestroy {
   setNavBarTheme(theme: string) {
     if (theme === 'themelight1') {
       this.navBarTheme = 'themelight1';
-      this.menuTitleTheme = 'theme3';
+      this.menuTitleTheme = 'theme4';
       this.sidebarImg = 'false';
     } else {
       this.menuTitleTheme = 'theme9';
-      this.navBarTheme = 'theme3';
+      this.navBarTheme = 'theme4';
       this.sidebarImg = 'false';
     }
   }
 
   setLayoutType(type: string) {
     if (type === 'dark') {
-      this.headerTheme = 'theme3';
-      this.navBarTheme = 'theme3';
-      this.activeItemTheme = 'theme3';
-      this.freamType = 'theme3';
+      this.headerTheme = 'theme4';
+      this.navBarTheme = 'theme4';
+      this.activeItemTheme = 'theme4';
+      this.freamType = 'theme4';
       document.querySelector('body').classList.add('dark');
-      this.setBackgroundPattern('theme3');
+      this.setBackgroundPattern('theme4');
       this.menuTitleTheme = 'theme9';
       this.layoutType = type;
       this.sidebarImg = 'false';
     } else if (type === 'light') {
-      this.headerTheme = 'theme3';
+      this.headerTheme = 'theme4';
       this.navBarTheme = 'themelight1';
-      this.menuTitleTheme = 'theme3';
-      this.activeItemTheme = 'theme3';
-      this.freamType = 'theme3';
+      this.menuTitleTheme = 'theme4';
+      this.activeItemTheme = 'theme4';
+      this.freamType = 'theme4';
       document.querySelector('body').classList.remove('dark');
-      this.setBackgroundPattern('theme3');
+      this.setBackgroundPattern('theme4');
       this.layoutType = type;
       this.sidebarImg = 'false';
     } else if (type === 'img') {
       this.sidebarImg = 'true';
       this.navBarTheme = 'themelight1';
-      this.menuTitleTheme = 'theme3';
-      this.freamType = 'theme3';
+      this.menuTitleTheme = 'theme4';
+      this.freamType = 'theme4';
       document.querySelector('body').classList.remove('dark');
-      this.setBackgroundPattern('theme3');
-      this.activeItemTheme = 'theme3';
+      this.setBackgroundPattern('theme4');
+      this.activeItemTheme = 'theme4';
     }
   }
 

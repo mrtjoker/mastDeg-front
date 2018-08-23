@@ -250,7 +250,6 @@ export class MedicinesComponent implements OnInit {
       _id: ''
     };
   }
-
   clearTempView() {
     this.tempView = {
       adverseReactions: '',
@@ -353,7 +352,7 @@ export class MedicinesComponent implements OnInit {
       .subscribe((results) => {
         this.tempFilter = [...results];
       });
-      this.clearTemp();
+    this.clearTemp();
   }
 
   delete(value) {
