@@ -17,6 +17,17 @@ import { ContraindicationsService } from '../shared/service/contraindications.se
 import { WarningService } from '../shared/service/warning.service';
 import { AdverseReactionsService } from '../shared/service/adverse-reactions.service';
 import { InteractionsService } from '../shared/service/interactions.service';
+import { SearchComponent } from './search/search.component';
+import { ListComponent } from './list/list.component';
+import { BrandNameService } from '../shared/service/brand-name.service';
+import { GenericNameService } from '../shared/service/generic-name.service';
+import { ThaiFDAService } from '../shared/service/thai-fda.service';
+import { FormService } from '../shared/service/form.service';
+import { ShapeService } from '../shared/service/shape.service';
+import { ColorService } from '../shared/service/color.service';
+import { MimsService } from '../shared/service/mims.service';
+import { FactoryService } from '../shared/service/factory.service';
+import { MedicinesService } from '../shared/service/medicines.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -29,7 +40,9 @@ import { InteractionsService } from '../shared/service/interactions.service';
     ArchwizardModule
   ],
   declarations: [
-    SearchMedicinesComponent
+    SearchMedicinesComponent,
+    SearchComponent,
+    ListComponent
   ],
   providers: [
     SelectOptionService,
@@ -41,6 +54,15 @@ import { InteractionsService } from '../shared/service/interactions.service';
     WarningService,
     AdverseReactionsService,
     InteractionsService,
+    BrandNameService,
+    GenericNameService,
+    ThaiFDAService,
+    FormService,
+    ShapeService,
+    ColorService,
+    MimsService,
+    FactoryService,
+    MedicinesService
   ]
 })
 export class SearchMedicinesModule { }

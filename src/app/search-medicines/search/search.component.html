@@ -1,0 +1,92 @@
+<div class="row">
+  <div class="col-sm-12">
+    <app-card [title]="'ค้นหา'" [cardOptionBlock]="false">
+      <div class="row">
+        <div class="col-sm-12 col-xl-4 m-b-30">
+          <h4 class="sub-title">ชื่อการค้า (Brand Name)</h4>
+          <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.brandName" [addOnBlur]="true"
+            [clearOnBlur]="true">
+            <tag-input-dropdown zIndex=3000 [autocompleteItems]="brandName"></tag-input-dropdown>
+          </tag-input>
+        </div>
+        <div class="col-sm-12 col-xl-4 m-b-30">
+          <h4 class="sub-title">ชื่อสามัญยา (Generic Name)</h4>
+          <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.genericName" [addOnBlur]="true"
+            [clearOnBlur]="true">
+            <tag-input-dropdown zIndex=3000 [autocompleteItems]="genericName"></tag-input-dropdown>
+          </tag-input>
+        </div>
+        <div class="col-sm-12 col-xl-4 m-b-30">
+          <h4 class="sub-title">Thailand FDA</h4>
+          <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.thaiFDA" [addOnBlur]="true" [clearOnBlur]="true">
+            <tag-input-dropdown zIndex=3000 [autocompleteItems]="thaiFDA"></tag-input-dropdown>
+          </tag-input>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 col-xl-4 m-b-30">
+          <h4 class="sub-title">รูปแบบ (Form)</h4>
+          <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.form" [addOnBlur]="true" [clearOnBlur]="true">
+            <tag-input-dropdown zIndex=3000 [autocompleteItems]="form"></tag-input-dropdown>
+          </tag-input>
+        </div>
+        <div class="col-sm-12 col-xl-4 m-b-30">
+          <h4 class="sub-title">รูปร่าง (Shape)</h4>
+          <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.shape" [addOnBlur]="true" [clearOnBlur]="true">
+            <tag-input-dropdown zIndex=3000 [autocompleteItems]="shape"></tag-input-dropdown>
+          </tag-input>
+        </div>
+        <div class="col-sm-12 col-xl-4 m-b-30">
+          <h4 class="sub-title">สี (Color)</h4>
+          <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.color" [addOnBlur]="true" [clearOnBlur]="true">
+            <tag-input-dropdown zIndex=3000 [autocompleteItems]="color"></tag-input-dropdown>
+          </tag-input>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 col-xl-4 m-b-30">
+          <h4 class="sub-title">MIMS Class</h4>
+          <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.mimsClass" [addOnBlur]="true"
+            [clearOnBlur]="true">
+            <tag-input-dropdown zIndex=3000 [autocompleteItems]="mimsClass"></tag-input-dropdown>
+          </tag-input>
+        </div>
+        <div class="col-sm-12 col-xl-4 m-b-30">
+          <h4 class="sub-title">Scoring</h4>
+          <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.scoring" [addOnBlur]="true" [clearOnBlur]="true">
+            <tag-input-dropdown zIndex=3000 [autocompleteItems]="scoring"></tag-input-dropdown>
+          </tag-input>
+        </div>
+        <div class="col-sm-12 col-xl-4 m-b-30">
+          <h4 class="sub-title">Logo</h4>
+          <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.logo" [addOnBlur]="true" [clearOnBlur]="true">
+            <tag-input-dropdown zIndex=3000 [autocompleteItems]="logo"></tag-input-dropdown>
+          </tag-input>
+        </div>
+        <div class="col-sm-12 col-xl-4 m-b-30">
+          <h4 class="sub-title">Marking</h4>
+          <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.marking" [addOnBlur]="true" [clearOnBlur]="true">
+            <tag-input-dropdown zIndex=3000 [autocompleteItems]="marking"></tag-input-dropdown>
+          </tag-input>
+        </div>
+        <div class="col-sm-12 col-xl-4 m-b-30">
+          <h4 class="sub-title">Manufacturer</h4>
+          <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.manufacturer" [addOnBlur]="true"
+            [clearOnBlur]="true">
+            <tag-input-dropdown zIndex=3000 [autocompleteItems]="manufacturer"></tag-input-dropdown>
+          </tag-input>
+        </div>
+        <div class="col-sm-12 col-xl-4 m-b-30">
+          <button type="button" class="btn btn-primary waves-effect waves-light f-right d-inline-block md-trigger" (click)="search()">
+            <i class="icofont icofont-plus m-r-5"></i> search
+          </button>
+        </div>
+        <div class="col-sm-12 col-xl-4 m-b-30">
+          <button type="button" class="btn btn-primary waves-effect waves-light f-right d-inline-block md-trigger" (click)="clearTemp()">
+            <i class="icofont icofont-plus m-r-5"></i> reset
+          </button>
+        </div>
+      </div>
+    </app-card>
+  </div>
+</div>

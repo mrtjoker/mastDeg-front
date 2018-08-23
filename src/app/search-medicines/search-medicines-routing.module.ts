@@ -9,7 +9,7 @@ const routes: Routes = [
     data: {
       title: 'Search Medicines',
       icon: 'icon-home',
-      caption: 'lorem ipsum dolor sit amet, consectetur adipisicing elit - search-medicines',
+      caption: 'lorem ipsum dolor sit amet, consectetur adipisicing elit - search medicines',
       status: true
     }
   }

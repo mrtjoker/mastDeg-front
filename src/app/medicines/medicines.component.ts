@@ -218,67 +218,6 @@ export class MedicinesComponent implements OnInit {
     this.table.offset = 0;
   }
 
-<<<<<<< HEAD
-  insert() {
-    this.tmp = { medicine: this.value };
-    this.value = '';
-    this.medicinesService.addMedicines(this.tmp).pipe(
-      mergeMap(() => this.medicinesService.getAllMedicines()))
-      .subscribe((results) => {
-        this.tempFilter = [...results];
-        this.rowsFilter = results;
-      });
-  }
-
-  update(value) {
-    this.medicinesService.updateMedicines(value._id, value).pipe(
-      mergeMap(() => this.medicinesService.getAllMedicines()))
-      .subscribe((results) => {
-        this.tempFilter = [...results];
-        this.rowsFilter = results;
-      });
-  }
-
-  delete(value) {
-    this.medicinesService.deleteMedicines(value._id).pipe(
-      mergeMap(() => this.medicinesService.getAllMedicines()))
-      .subscribe((results) => {
-        this.tempFilter = [...results];
-        this.rowsFilter = results;
-      });
-  }
-
-  openMyModal(event) {
-    document.querySelector('#' + event).classList.add('md-show');
-  }
-
-  openMyModalData(data) {
-    console.log( data)
-    this.tempView = {
-      adverseReactions: data.adverseReactions,
-      advice: data.advice,
-      color: data.color[0].value,
-      colorCode: '',
-      brandName: data.brandName[0].value,
-      contraindications: '',
-      dosage: '',
-      form: data.form[0].value,
-      shape: data.shape[0].value,
-      genericName: data.genericName[0].value,
-      imprint: data.imprint[0].value,
-      indications: '',
-      interactions: '',
-      mimsClass: data.mimsClass[0].value,
-      presentation: data.presentation[0].value,
-      presentationPack: data.presentationPack[0].value,
-      initialThaiFDA: data.initialThaiFDA[0].value,
-      thaiFDAEN: '',
-      thaiFDATH: '',
-      usFDA: data.usFDA[0].value,
-      warning: '',
-      registrationNumber: data.registrationNumber,
-      numberFD: data.numberFD,
-=======
   clearTemp() {
     this.temp = {
       adverseReactions: '',
@@ -304,27 +243,13 @@ export class MedicinesComponent implements OnInit {
       warning: '',
       registrationNumber: '',
       numberFD: '',
->>>>>>> 59d775adb83cec44e4f7c8917d74a338d39e87ba
       allowFacturer: '',
       manuFacturer: '',
       distributor: '',
       marketer: '',
-<<<<<<< HEAD
-    }
-  }
-
-  closeMyModal(event) {
-    ((event.target.parentElement.parentElement).parentElement).classList.remove('md-show');
-  }
-
-  save(event) {
-    ((event.target.parentElement.parentElement).parentElement).classList.remove('md-show');
-=======
       _id: ''
     };
->>>>>>> 59d775adb83cec44e4f7c8917d74a338d39e87ba
   }
-
   clearTempView() {
     this.tempView = {
       adverseReactions: '',
@@ -427,7 +352,7 @@ export class MedicinesComponent implements OnInit {
       .subscribe((results) => {
         this.tempFilter = [...results];
       });
-      this.clearTemp();
+    this.clearTemp();
   }
 
   delete(value) {
