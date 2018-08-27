@@ -294,6 +294,7 @@ export class MedicinesComponent implements OnInit {
     this.medicinesService.addMedicines(this.temp).pipe(
       mergeMap(() => this.medicinesService.getAllMedicines()))
       .subscribe((results) => {
+        console.log(results);
         this.tempFilter = [...results];
         this.rowsFilter = results;
       });
