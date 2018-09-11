@@ -75,6 +75,7 @@ export class FormSelectComponent implements OnInit, OnDestroy {
   constructor(public selectOptionService: SelectOptionService) { }
 
   ngOnInit() {
+    console.log(this.simpleOption)
     this.runTimer();
     this.dataSub = this.selectOptionService.loadCharacters().subscribe((options) => {
       this.characters = options;

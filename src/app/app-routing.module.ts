@@ -14,9 +14,13 @@ const routes: Routes = [
         redirectTo: 'dashboard/default',
         pathMatch: 'full'
       },
+      // {
+      //   path: 'basic-data',
+      //   loadChildren: './basic-data/basic-data.module#BasicDataModule'
+      // },
       {
-        path: 'basic-data',
-        loadChildren: './basic-data/basic-data.module#BasicDataModule'
+        path: 'all-basic-data',
+        loadChildren: './all-basic-data/all-basic-data.module#AllBasicDataModule'
       },
       {
         path: 'medicines',

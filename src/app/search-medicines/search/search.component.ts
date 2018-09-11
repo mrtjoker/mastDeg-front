@@ -9,6 +9,7 @@ import { MimsService } from '../../shared/service/mims.service';
 import { FactoryService } from '../../shared/service/factory.service';
 import { element } from '@angular/core/src/render3/instructions';
 import { MedicinesService } from '../../shared/service/medicines.service';
+import { IOption } from 'ng-select';
 
 @Component({
   selector: 'app-search',
@@ -29,17 +30,19 @@ export class SearchComponent implements OnInit {
     marking: '',
     manufacturer: '',
   }
-  public brandName = [];
-  public genericName = [];
-  public thaiFDA = [];
-  public form = [];
-  public shape = [];
-  public color = [];
-  public mimsClass = [];
-  public scoring = [];
-  public logo = [];
-  public marking = [];
-  public manufacturer = [];
+  public brandName: Array<IOption>;
+  public genericName: Array<IOption>;
+  public thaiFDA: Array<IOption>;
+  public form: Array<IOption>;
+  public shape: Array<IOption>;
+  public color: Array<IOption>;
+  public mimsClass: Array<IOption>;
+  public scoring: Array<IOption>;
+  public logo: Array<IOption>;
+  public marking: Array<IOption>;
+  public manufacturer: Array<IOption>;
+  public backup = [];
+
   constructor(
     private brandNameService: BrandNameService,
     private genericNameService: GenericNameService,
@@ -54,28 +57,52 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     this.brandNameService.getAllBrandName().subscribe((result) => {
-      result.forEach(element => { this.brandName.push(element.brandName); });
+      for (let i = 0; i < result.length; i++)
+        this.backup.push({ value: result[i].brandName, label: result[i].brandName })
+      this.brandName = this.backup;
+      this.backup = [];
     });
     this.genericNameService.getAllGenericName().subscribe((result) => {
-      result.forEach(element => { this.genericName.push(element.genericName); });
+      for (let i = 0; i < result.length; i++)
+        this.backup.push({ value: result[i].genericName, label: result[i].genericName })
+      this.genericName = this.backup;
+      this.backup = [];
     });
     this.thaiFDAService.getAllThaiFDA().subscribe((result) => {
-      result.forEach(element => { this.thaiFDA.push(element.initialThaiFDA); });
+      for (let i = 0; i < result.length; i++)
+        this.backup.push({ value: result[i].initialThaiFDA, label: result[i].initialThaiFDA })
+      this.thaiFDA = this.backup;
+      this.backup = [];
     });
     this.formService.getAllForm().subscribe((result) => {
-      result.forEach(element => { this.form.push(element.form); });
+      for (let i = 0; i < result.length; i++)
+        this.backup.push({ value: result[i].form, label: result[i].form })
+      this.form = this.backup;
+      this.backup = [];
     });
     this.shapeService.getAllShape().subscribe((result) => {
-      result.forEach(element => { this.shape.push(element.shape); });
+      for (let i = 0; i < result.length; i++)
+        this.backup.push({ value: result[i].shape, label: result[i].shape })
+      this.shape = this.backup;
+      this.backup = [];
     });
     this.colorService.getAllColor().subscribe((result) => {
-      result.forEach(element => { this.color.push(element.color); });
+      for (let i = 0; i < result.length; i++)
+        this.backup.push({ value: result[i].color, label: result[i].color })
+      this.color = this.backup;
+      this.backup = [];
     });
     this.mimsService.getAllMims().subscribe((result) => {
-      result.forEach(element => { this.mimsClass.push(element.mimsClass); });
+      for (let i = 0; i < result.length; i++)
+        this.backup.push({ value: result[i].mimsClass, label: result[i].mimsClass })
+      this.mimsClass = this.backup;
+      this.backup = [];
     });
     this.factoryService.getAllFactory().subscribe((result) => {
-      result.forEach(element => { this.manufacturer.push(element.factory); });
+      for (let i = 0; i < result.length; i++)
+        this.backup.push({ value: result[i].factory, label: result[i].factory })
+      this.manufacturer = this.backup;
+      this.backup = [];
     });
   }
 
@@ -100,5 +127,5 @@ export class SearchComponent implements OnInit {
       console.log(result);
     });
   }
-  
+
 }

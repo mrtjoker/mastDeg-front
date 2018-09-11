@@ -35,96 +35,103 @@ const MENUITEMS = [
     label: 'MENU',
     main: [
       {
-        state: 'basic-data',
+        state: 'all-basic-data',
         short_label: 'B',
-        name: 'ข้อมูลพื้นฐาน',
-        type: 'sub',
-        icon: 'feather icon-menu',
-        children: [
-          {
-            state: 'adverseReactions',
-            name: 'อาการไม่พึงประสงค์'
-          },
-          {
-            state: 'advice',
-            name: 'คำแนะนำ'
-          },
-          {
-            state: 'brandName',
-            name: 'ชื่อการค้า'
-          },
-          {
-            state: 'color',
-            name: 'สี'
-          },
-          {
-            state: 'contraindications',
-            name: 'ข้อควรระวัง'
-          },
-          {
-            state: 'dosage',
-            name: 'ปริมาณที่ให้'
-          },
-          {
-            state: 'factory',
-            name: 'บริษัท'
-          },
-          {
-            state: 'form',
-            name: 'รูปแบบ'
-          },
-          {
-            state: 'genericName',
-            name: 'ชื่อสามัญทางยา'
-          },
-          {
-            state: 'imprint',
-            name: 'imprint'
-          },
-          {
-            state: 'indications',
-            name: 'ข้อบ่งใช้'
-          },
-          {
-            state: 'interactions',
-            name: 'อันตรกิริยาระหว่างยา'
-          },
-          {
-            state: 'mims',
-            name: 'กลุ่มยาตาม MIMS Thailand'
-          },
-          {
-            state: 'presentation',
-            name: 'ขนาดความแรง'
-          },
-          {
-            state: 'presentationPack',
-            name: 'ขนาดความแรงต่อบรรจุภัณฑ์'
-          },
-          {
-            state: 'shape',
-            name: 'รูปร่าง'
-          },
-          {
-            state: 'thaiFDA',
-            name: 'Thailand FDA'
-          },
-          {
-            state: 'usFDA',
-            name: 'US FDA'
-          },
-          {
-            state: 'warning',
-            name: 'คำเตือน'
-          },
-        ]
+        name: 'ข้อมูลพืนฐาน',
+        type: 'link',
+        icon: 'feather icon-menu'
       },
+      // {
+      //   state: 'basic-data',
+      //   short_label: 'B',
+      //   name: 'ข้อมูลพื้นฐาน',
+      //   type: 'sub',
+      //   icon: 'feather icon-menu',
+      //   children: [
+      //     {
+      //       state: 'adverseReactions',
+      //       name: 'อาการไม่พึงประสงค์'
+      //     },
+      //     {
+      //       state: 'advice',
+      //       name: 'คำแนะนำ'
+      //     },
+      //     {
+      //       state: 'brandName',
+      //       name: 'ชื่อการค้า'
+      //     },
+      //     {
+      //       state: 'color',
+      //       name: 'สี'
+      //     },
+      //     {
+      //       state: 'contraindications',
+      //       name: 'ข้อควรระวัง'
+      //     },
+      //     {
+      //       state: 'dosage',
+      //       name: 'ปริมาณที่ให้'
+      //     },
+      //     {
+      //       state: 'factory',
+      //       name: 'บริษัท'
+      //     },
+      //     {
+      //       state: 'form',
+      //       name: 'รูปแบบ'
+      //     },
+      //     {
+      //       state: 'genericName',
+      //       name: 'ชื่อสามัญทางยา'
+      //     },
+      //     {
+      //       state: 'imprint',
+      //       name: 'imprint'
+      //     },
+      //     {
+      //       state: 'indications',
+      //       name: 'ข้อบ่งใช้'
+      //     },
+      //     {
+      //       state: 'interactions',
+      //       name: 'อันตรกิริยาระหว่างยา'
+      //     },
+      //     {
+      //       state: 'mims',
+      //       name: 'กลุ่มยาตาม MIMS Thailand'
+      //     },
+      //     {
+      //       state: 'presentation',
+      //       name: 'ขนาดความแรง'
+      //     },
+      //     {
+      //       state: 'presentationPack',
+      //       name: 'ขนาดความแรงต่อบรรจุภัณฑ์'
+      //     },
+      //     {
+      //       state: 'shape',
+      //       name: 'รูปร่าง'
+      //     },
+      //     {
+      //       state: 'thaiFDA',
+      //       name: 'Thailand FDA'
+      //     },
+      //     {
+      //       state: 'usFDA',
+      //       name: 'US FDA'
+      //     },
+      //     {
+      //       state: 'warning',
+      //       name: 'คำเตือน'
+      //     },
+      //   ]
+      // },
       {
         state: 'medicines',
         short_label: 'M',
         name: 'ข้อมูลยา',
         type: 'link',
-        icon: 'feather icon-aperture rotate-refresh'
+        icon: 'feather icon-aperture'
       },
       {
         state: 'search-medicines',

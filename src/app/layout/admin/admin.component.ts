@@ -172,14 +172,14 @@ export class AdminComponent implements OnInit, OnDestroy {
     this.verticalLayout = 'wide';
     this.pcodedDeviceType = 'desktop';
     this.verticalNavType = 'expanded';
-    this.verticalEffect = 'shrink';
+    this.verticalEffect = 'overlay';
     this.vnavigationView = 'view1';
-    this.freamType = 'theme4';
+    this.freamType = 'theme6';
     this.sidebarImg = 'false';
     this.sidebarImgType = 'img1';
     this.layoutType = 'light'; // light(default) dark(dark)
 
-    this.headerTheme = 'theme4'; // theme4(default)
+    this.headerTheme = 'theme6'; // theme6(default)
     this.pcodedHeaderPosition = 'fixed';
 
     this.headerFixedTop = 'auto';
@@ -196,10 +196,10 @@ export class AdminComponent implements OnInit, OnDestroy {
 
     this.toggleOn = true;
     this.toggleIcon = 'icon-toggle-right';
-    this.navBarTheme = 'themelight1'; // themelight1(default) theme4(dark)
-    this.activeItemTheme = 'theme4';
+    this.navBarTheme = 'themelight1'; // themelight1(default) theme6(dark)
+    this.activeItemTheme = 'theme11';
     this.pcodedSidebarPosition = 'fixed';
-    this.menuTitleTheme = 'theme4'; // theme4(default) theme40(dark)
+    this.menuTitleTheme = 'theme6'; // theme6(default) theme60(dark)
     this.dropDownIcon = 'style1';
     this.subItemIcon = 'style1';
 
@@ -230,7 +230,7 @@ export class AdminComponent implements OnInit, OnDestroy {
     this.setNavBarTheme('themelight1');*/
 
     // dark-light theme
-    /*this.setNavBarTheme('theme4');*/
+    /*this.setNavBarTheme('theme6');*/
 
     // box layout
     /*this.setHeaderPosition();
@@ -239,7 +239,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.setBackgroundPattern('theme4');
+    this.setBackgroundPattern('theme6');
   }
 
   onResize(event) {
@@ -433,44 +433,44 @@ export class AdminComponent implements OnInit, OnDestroy {
   setNavBarTheme(theme: string) {
     if (theme === 'themelight1') {
       this.navBarTheme = 'themelight1';
-      this.menuTitleTheme = 'theme4';
+      this.menuTitleTheme = 'theme6';
       this.sidebarImg = 'false';
     } else {
       this.menuTitleTheme = 'theme9';
-      this.navBarTheme = 'theme4';
+      this.navBarTheme = 'theme6';
       this.sidebarImg = 'false';
     }
   }
 
   setLayoutType(type: string) {
     if (type === 'dark') {
-      this.headerTheme = 'theme4';
-      this.navBarTheme = 'theme4';
-      this.activeItemTheme = 'theme4';
-      this.freamType = 'theme4';
+      this.headerTheme = 'theme6';
+      this.navBarTheme = 'theme6';
+      this.activeItemTheme = 'theme11';
+      this.freamType = 'theme6';
       document.querySelector('body').classList.add('dark');
-      this.setBackgroundPattern('theme4');
+      this.setBackgroundPattern('theme6');
       this.menuTitleTheme = 'theme9';
       this.layoutType = type;
       this.sidebarImg = 'false';
     } else if (type === 'light') {
-      this.headerTheme = 'theme4';
+      this.headerTheme = 'theme6';
       this.navBarTheme = 'themelight1';
-      this.menuTitleTheme = 'theme4';
-      this.activeItemTheme = 'theme4';
-      this.freamType = 'theme4';
+      this.menuTitleTheme = 'theme6';
+      this.activeItemTheme = 'theme11';
+      this.freamType = 'theme6';
       document.querySelector('body').classList.remove('dark');
-      this.setBackgroundPattern('theme4');
+      this.setBackgroundPattern('theme6');
       this.layoutType = type;
       this.sidebarImg = 'false';
     } else if (type === 'img') {
       this.sidebarImg = 'true';
       this.navBarTheme = 'themelight1';
-      this.menuTitleTheme = 'theme4';
-      this.freamType = 'theme4';
+      this.menuTitleTheme = 'theme6';
+      this.freamType = 'theme6';
       document.querySelector('body').classList.remove('dark');
-      this.setBackgroundPattern('theme4');
-      this.activeItemTheme = 'theme4';
+      this.setBackgroundPattern('theme6');
+      this.activeItemTheme = 'theme11';
     }
   }
 
