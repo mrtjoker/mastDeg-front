@@ -1,92 +1,159 @@
-<div class="row">
-  <div class="col-sm-12">
-    <app-card [title]="'ค้นหา'" [cardOptionBlock]="false">
-      <div class="row">
-        <div class="col-sm-12 col-xl-4 m-b-30">
-          <h4 class="sub-title">ชื่อการค้า (Brand Name)</h4>
-          <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.brandName" [addOnBlur]="true"
-            [clearOnBlur]="true">
-            <tag-input-dropdown zIndex=3000 [autocompleteItems]="brandName"></tag-input-dropdown>
-          </tag-input>
+<div class="page-body">
+  <div class="row">
+    <div class="col-xl-4 col-sm-12">
+      <div class="card o-hidden">
+        <div class="card-block bg-c-green p-b-0">
+          <div class="row text-white m-b-20">
+            <div class="col-auto">
+              <h4 class="m-b-5">ค้นหา</h4>
+            </div>
+            <div class="col text-right">
+              <h6>Medicines Search</h6>
+            </div>
+          </div>
         </div>
-        <div class="col-sm-12 col-xl-4 m-b-30">
-          <h4 class="sub-title">ชื่อสามัญยา (Generic Name)</h4>
-          <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.genericName" [addOnBlur]="true"
-            [clearOnBlur]="true">
-            <tag-input-dropdown zIndex=3000 [autocompleteItems]="genericName"></tag-input-dropdown>
-          </tag-input>
-        </div>
-        <div class="col-sm-12 col-xl-4 m-b-30">
-          <h4 class="sub-title">Thailand FDA</h4>
-          <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.thaiFDA" [addOnBlur]="true" [clearOnBlur]="true">
-            <tag-input-dropdown zIndex=3000 [autocompleteItems]="thaiFDA"></tag-input-dropdown>
-          </tag-input>
+        <div class="card-footer">
+          <div class="col-sm-12">
+            <div class="form-group row">
+              <label class="col-sm-2 col-xl-3 col-form-label">ชื่อการค้า</label>
+              <div class="col-sm-12 col-xl-9">
+                <ng-select [ngClass]="'ng-select'" [options]="brandName" [(ngModel)]="temp.brandName"></ng-select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-5 col-xl-3 col-form-label">ชื่อสามัญยา</label>
+              <div class="col-sm-12 col-xl-9">
+                <ng-select [ngClass]="'ng-select'" [options]="genericName" [(ngModel)]="temp.genericName"></ng-select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-5 col-xl-3 col-form-label">Thailand FDA</label>
+              <div class="col-sm-12 col-xl-9">
+                <ng-select [ngClass]="'ng-select'" [options]="thaiFDA" [(ngModel)]="temp.thaiFDA"></ng-select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-5 col-xl-3 col-form-label">รูปแบบ</label>
+              <div class="col-sm-12 col-xl-9">
+                <ng-select [ngClass]="'ng-select'" [options]="form" [(ngModel)]="temp.form"></ng-select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-5 col-xl-3 col-form-label">รูปร่าง</label>
+              <div class="col-sm-12 col-xl-9">
+                <ng-select [ngClass]="'ng-select'" [options]="shape" [(ngModel)]="temp.shape"></ng-select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-5 col-xl-3 col-form-label">สี</label>
+              <div class="col-sm-12 col-xl-9">
+                <ng-select [ngClass]="'ng-select'" [options]="color" [(ngModel)]="temp.color"></ng-select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-5 col-xl-3 col-form-label">MIMS Class</label>
+              <div class="col-sm-12 col-xl-9">
+                <ng-select [ngClass]="'ng-select'" [options]="mimsClass" [(ngModel)]="temp.mimsClass"></ng-select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-5 col-xl-3 col-form-label">Scoring</label>
+              <div class="col-sm-12 col-xl-9">
+                <ng-select [ngClass]="'ng-select'" [options]="scoring" [(ngModel)]="temp.scoring"></ng-select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-5 col-xl-3 col-form-label">Logo</label>
+              <div class="col-sm-12 col-xl-9">
+                <ng-select [ngClass]="'ng-select'" [options]="logo" [(ngModel)]="temp.logo"></ng-select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-5 col-xl-3 col-form-label">Marking</label>
+              <div class="col-sm-12 col-xl-9">
+                <ng-select [ngClass]="'ng-select'" [options]="marking" [(ngModel)]="temp.marking"></ng-select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-5 col-xl-3 col-form-label">Manufacturer</label>
+              <div class="col-sm-12 col-xl-9">
+                <ng-select [ngClass]="'ng-select'" [options]="manufacturer" [(ngModel)]="temp.manufacturer"></ng-select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-6 col-form-label"></div>
+              <div class="col-sm-2 col-form-label">
+                <button type="button" class="btn btn-primary waves-effect waves-light f-right d-inline-block md-trigger" (click)="clearTemp()">
+                  <i class="icofont icofont-plus m-r-5"></i> reset
+                </button>
+              </div>-
+              <div class="col-sm-1 col-form-label">
+                <button type="button" class="btn btn-primary waves-effect waves-light f-right d-inline-block md-trigger" (click)="search()">
+                  <i class="icofont icofont-plus m-r-5"></i> search
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-12 col-xl-4 m-b-30">
-          <h4 class="sub-title">รูปแบบ (Form)</h4>
-          <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.form" [addOnBlur]="true" [clearOnBlur]="true">
-            <tag-input-dropdown zIndex=3000 [autocompleteItems]="form"></tag-input-dropdown>
-          </tag-input>
+    </div>
+    <div class="col-xl-8 col-sm-12">
+      <app-card [title]="'Latest Order'" [cardClass]="'latest-activity-card'" [headerClass]="'borderless'">
+        <div class="table-responsive">
+          <table class="table table-hover table-borderless">
+            <thead>
+              <tr>
+                <th>Customer</th>
+                <th>Order ID</th>
+                <th>Photo</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>John Deo</td>
+                <td>#81412</td>
+                <td><img src="assets/images/widget/PHONE1.jpg" alt="" class="img-fluid"></td>
+                <td>Moto G5</td>
+                <td>10</td>
+                <td>17-2-2017</td>
+                <td><label class="label label-warning">Pending</label></td>
+                <td><a href="javascript:"><i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-green"></i></a><a href="javascript:"><i
+                      class="feather icon-trash-2 f-w-600 f-16 text-c-red"></i></a></td>
+              </tr>
+              <tr>
+                <td>Jenny William</td>
+                <td>#68457</td>
+                <td><img src="assets/images/widget/PHONE2.jpg" alt="" class="img-fluid"></td>
+                <td>iPhone 8</td>
+                <td>16</td>
+                <td>20-2-2017</td>
+                <td><label class="label label-primary">Paid</label></td>
+                <td><a href="javascript:"><i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-green"></i></a><a href="javascript:"><i
+                      class="feather icon-trash-2 f-w-600 f-16 text-c-red"></i></a></td>
+              </tr>
+              <tr>
+                <td>Lori Moore</td>
+                <td>#45457</td>
+                <td><img src="assets/images/widget/PHONE3.jpg" alt="" class="img-fluid"></td>
+                <td>Redmi 4</td>
+                <td>20</td>
+                <td>17-2-2017</td>
+                <td><label class="label label-success">Success</label></td>
+                <td><a href="javascript:"><i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-green"></i></a><a href="javascript:"><i
+                      class="feather icon-trash-2 f-w-600 f-16 text-c-red"></i></a></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="col-sm-12 col-xl-4 m-b-30">
-          <h4 class="sub-title">รูปร่าง (Shape)</h4>
-          <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.shape" [addOnBlur]="true" [clearOnBlur]="true">
-            <tag-input-dropdown zIndex=3000 [autocompleteItems]="shape"></tag-input-dropdown>
-          </tag-input>
+        <div class="text-right  m-r-20">
+          <a href="javascript:" class="b-b-primary text-primary">View all Orders</a>
         </div>
-        <div class="col-sm-12 col-xl-4 m-b-30">
-          <h4 class="sub-title">สี (Color)</h4>
-          <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.color" [addOnBlur]="true" [clearOnBlur]="true">
-            <tag-input-dropdown zIndex=3000 [autocompleteItems]="color"></tag-input-dropdown>
-          </tag-input>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-12 col-xl-4 m-b-30">
-          <h4 class="sub-title">MIMS Class</h4>
-          <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.mimsClass" [addOnBlur]="true"
-            [clearOnBlur]="true">
-            <tag-input-dropdown zIndex=3000 [autocompleteItems]="mimsClass"></tag-input-dropdown>
-          </tag-input>
-        </div>
-        <div class="col-sm-12 col-xl-4 m-b-30">
-          <h4 class="sub-title">Scoring</h4>
-          <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.scoring" [addOnBlur]="true" [clearOnBlur]="true">
-            <tag-input-dropdown zIndex=3000 [autocompleteItems]="scoring"></tag-input-dropdown>
-          </tag-input>
-        </div>
-        <div class="col-sm-12 col-xl-4 m-b-30">
-          <h4 class="sub-title">Logo</h4>
-          <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.logo" [addOnBlur]="true" [clearOnBlur]="true">
-            <tag-input-dropdown zIndex=3000 [autocompleteItems]="logo"></tag-input-dropdown>
-          </tag-input>
-        </div>
-        <div class="col-sm-12 col-xl-4 m-b-30">
-          <h4 class="sub-title">Marking</h4>
-          <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.marking" [addOnBlur]="true" [clearOnBlur]="true">
-            <tag-input-dropdown zIndex=3000 [autocompleteItems]="marking"></tag-input-dropdown>
-          </tag-input>
-        </div>
-        <div class="col-sm-12 col-xl-4 m-b-30">
-          <h4 class="sub-title">Manufacturer</h4>
-          <tag-input [ngClass]="'tag-select'" theme='bootstrap' [placeholder]="'+'" [(ngModel)]="temp.manufacturer" [addOnBlur]="true"
-            [clearOnBlur]="true">
-            <tag-input-dropdown zIndex=3000 [autocompleteItems]="manufacturer"></tag-input-dropdown>
-          </tag-input>
-        </div>
-        <div class="col-sm-12 col-xl-4 m-b-30">
-          <button type="button" class="btn btn-primary waves-effect waves-light f-right d-inline-block md-trigger" (click)="search()">
-            <i class="icofont icofont-plus m-r-5"></i> search
-          </button>
-        </div>
-        <div class="col-sm-12 col-xl-4 m-b-30">
-          <button type="button" class="btn btn-primary waves-effect waves-light f-right d-inline-block md-trigger" (click)="clearTemp()">
-            <i class="icofont icofont-plus m-r-5"></i> reset
-          </button>
-        </div>
-      </div>
-    </app-card>
+      </app-card>
+    </div>
   </div>
 </div>

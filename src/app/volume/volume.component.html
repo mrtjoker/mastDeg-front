@@ -1,0 +1,27 @@
+<div class="card">
+  <div class="md-tabs">
+    <ngb-tabset>
+      <ngb-tab title="ปริมาณที่ให้">
+        <ng-template ngbTabContent>
+          <div [@fadeInOutTranslate] class="m-t-15">
+            <app-dosage></app-dosage>
+          </div>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="ปริมาณความแรง">
+        <ng-template ngbTabContent>
+          <div [@fadeInOutTranslate] class="m-t-15">
+            <app-presentation></app-presentation>
+          </div>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="ปริมาณความแรง ต่อบรรจุภัณฑ์">
+        <ng-template ngbTabContent>
+          <div [@fadeInOutTranslate] class="m-t-15">
+            <app-presentationPack></app-presentationPack>
+          </div>
+        </ng-template>
+      </ngb-tab>
+    </ngb-tabset>
+  </div>
+</div>

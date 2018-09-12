@@ -28,6 +28,7 @@ import { ColorService } from '../shared/service/color.service';
 import { MimsService } from '../shared/service/mims.service';
 import { FactoryService } from '../shared/service/factory.service';
 import { MedicinesService } from '../shared/service/medicines.service';
+import { SelectModule } from 'ng-select';
 @NgModule({
   imports: [
     CommonModule,
@@ -37,7 +38,8 @@ import { MedicinesService } from '../shared/service/medicines.service';
     FormsModule,
     TagInputModule,
     NgxDatatableModule,
-    ArchwizardModule
+    ArchwizardModule,
+    SelectModule
   ],
   declarations: [
     SearchMedicinesComponent,

@@ -16,32 +16,27 @@
     <div class="card-block">
         <ngx-datatable #table class="data-table resizeable" [columnMode]="'force'" [scrollbarH]="true" [headerHeight]="50" [footerHeight]="50"
             [rowHeight]="50" [limit]="10" [rows]='rowsFilter' [reorderable]="true">
+            <ngx-datatable-column name="MIMS Class">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{row.mimsClass}}
+                </ng-template>
+            </ngx-datatable-column>
             <ngx-datatable-column name="ชื่อการค้า">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                    {{row.brandName[0].value}}
+                    {{row.brandName}}
                 </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="ชื่อสามัญยา">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                    {{row.genericName[0].value}}
-                </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column name="MIMS Class">
-                <ng-template let-row="row" ngx-datatable-cell-template>
-                    {{row.mimsClass[0].value}}
-                </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column name="ขนาดความแรง">
-                <ng-template let-row="row" ngx-datatable-cell-template>
-                    {{row.presentation[0].value}}
+                    {{row.genericName}}
                 </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="Thailand FDA">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                    {{row.initialThaiFDA[0].value}}
+                    {{row.initialThaiFDA}}
                 </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="ดำเนินการ" [maxWidth]="100">
+            <ngx-datatable-column name="ดำเนินการ " [maxWidth]="100">
                 <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
                     <a href="javascript:;" class="m-r-15 crm-action-view text-info" (click)="openMyModalData(row);openView('effect-12')">
                         <i class="fa fa-book"></i>
@@ -554,7 +549,7 @@
 <!-- update -->
 <app-modal-animation [modalID]="'effect-11'" [modalClass]="'md-effect-8'">
     <h3 class="f-26">เพิ่มยาชนิดใหม่</h3>
-    <wizard #wizard class="arc-wizard" >
+    <wizard #wizard class="arc-wizard">
         <wizard-step stepTitle="ข้อมูลยา">
             <div class="centered-content">
                 <div class="text-left">
