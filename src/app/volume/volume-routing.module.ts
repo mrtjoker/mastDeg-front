@@ -1,15 +1,15 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import { BasicDataComponent } from './basic-data.component';
+import { VolumeComponent } from './volume.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: BasicDataComponent,
+    component: VolumeComponent,
     data: {
-      title: '',
+      title: 'ปริมาณยา',
       icon: 'icon-home',
-      caption: 'lorem ipsum dolor sit amet, consectetur adipisicing elit - ข้อมูลพื้นฐาน',
+      caption: 'lorem ipsum dolor sit amet, consectetur adipisicing elit - ปริมาณยา',
       status: true
     }
   }
@@ -19,4 +19,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class BasicDataRoutingModule { }
+export class VolumeRoutingModule { }

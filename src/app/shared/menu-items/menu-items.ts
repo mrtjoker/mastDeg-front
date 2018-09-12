@@ -35,97 +35,173 @@ const MENUITEMS = [
     label: 'MENU',
     main: [
       {
-        state: 'all-basic-data',
+        state: 'basic-data',
         short_label: 'B',
-        name: 'ข้อมูลพืนฐาน',
+        name: 'ข้อมูลพื้นฐาน',
         type: 'link',
-        icon: 'feather icon-menu'
+        icon: 'feather icon-menu',
       },
-      // {
-      //   state: 'basic-data',
-      //   short_label: 'B',
-      //   name: 'ข้อมูลพื้นฐาน',
-      //   type: 'sub',
-      //   icon: 'feather icon-menu',
-      //   children: [
-      //     {
-      //       state: 'adverseReactions',
-      //       name: 'อาการไม่พึงประสงค์'
-      //     },
-      //     {
-      //       state: 'advice',
-      //       name: 'คำแนะนำ'
-      //     },
-      //     {
-      //       state: 'brandName',
-      //       name: 'ชื่อการค้า'
-      //     },
-      //     {
-      //       state: 'color',
-      //       name: 'สี'
-      //     },
-      //     {
-      //       state: 'contraindications',
-      //       name: 'ข้อควรระวัง'
-      //     },
-      //     {
-      //       state: 'dosage',
-      //       name: 'ปริมาณที่ให้'
-      //     },
-      //     {
-      //       state: 'factory',
-      //       name: 'บริษัท'
-      //     },
-      //     {
-      //       state: 'form',
-      //       name: 'รูปแบบ'
-      //     },
-      //     {
-      //       state: 'genericName',
-      //       name: 'ชื่อสามัญทางยา'
-      //     },
-      //     {
-      //       state: 'imprint',
-      //       name: 'imprint'
-      //     },
-      //     {
-      //       state: 'indications',
-      //       name: 'ข้อบ่งใช้'
-      //     },
-      //     {
-      //       state: 'interactions',
-      //       name: 'อันตรกิริยาระหว่างยา'
-      //     },
-      //     {
-      //       state: 'mims',
-      //       name: 'กลุ่มยาตาม MIMS Thailand'
-      //     },
-      //     {
-      //       state: 'presentation',
-      //       name: 'ขนาดความแรง'
-      //     },
-      //     {
-      //       state: 'presentationPack',
-      //       name: 'ขนาดความแรงต่อบรรจุภัณฑ์'
-      //     },
-      //     {
-      //       state: 'shape',
-      //       name: 'รูปร่าง'
-      //     },
-      //     {
-      //       state: 'thaiFDA',
-      //       name: 'Thailand FDA'
-      //     },
-      //     {
-      //       state: 'usFDA',
-      //       name: 'US FDA'
-      //     },
-      //     {
-      //       state: 'warning',
-      //       name: 'คำเตือน'
-      //     },
-      //   ]
-      // },
+      {
+        state: 'feature',
+        short_label: 'M',
+        name: 'คุณลักษณะ',
+        type: 'link',
+        icon: 'feather icon-aperture'
+      },
+      {
+        state: 'information-medicines',
+        short_label: 'M',
+        name: 'ข้อมูลยา',
+        type: 'link',
+        icon: 'feather icon-aperture'
+      },
+      {
+        state: 'about',
+        short_label: 'M',
+        name: 'อธิบาย',
+        type: 'link',
+        icon: 'feather icon-aperture'
+      },
+      {
+        state: 'volume',
+        short_label: 'M',
+        name: 'ปริมาณ',
+        type: 'link',
+        icon: 'feather icon-aperture'
+      },
+      {
+        state: 'adverseReactions',
+        short_label: 'M',
+        name: 'อาการไม่พึงประสงค์',
+        type: 'link',
+        icon: 'feather icon-aperture'
+      },
+      {
+        state: 'advice',
+        short_label: 'M',
+        name: 'คำแนะนำ',
+        type: 'link',
+        icon: 'feather icon-aperture'
+      },
+      {
+        state: 'brandName',
+        short_label: 'M',
+        name: 'ชื่อการค้า',
+        type: 'link',
+        icon: 'feather icon-aperture'
+      },
+      {
+        state: 'color',
+        short_label: 'M',
+        name: 'สี',
+        type: 'link',
+        icon: 'feather icon-aperture'
+      },
+      {
+        state: 'contraindications',
+        short_label: 'M',
+        name: 'ข้อควรระวัง',
+        type: 'link',
+        icon: 'feather icon-aperture'
+      },
+      {
+        state: 'dosage',
+        short_label: 'M',
+        name: 'ปริมาณที่ให้',
+        type: 'link',
+        icon: 'feather icon-aperture'
+      },
+      {
+        state: 'factory',
+        short_label: 'M',
+        name: 'บริษัท',
+        type: 'link',
+        icon: 'feather icon-aperture'
+      },
+      {
+        state: 'form',
+        short_label: 'M',
+        name: 'รูปแบบ',
+        type: 'link',
+        icon: 'feather icon-aperture'
+      },
+      {
+        state: 'genericName',
+        short_label: 'M',
+        name: 'ชื่อสามัญทางยา',
+        type: 'link',
+        icon: 'feather icon-aperture'
+      },
+      {
+        state: 'imprint',
+        short_label: 'M',
+        name: 'imprint',
+        type: 'link',
+        icon: 'feather icon-aperture'
+      },
+      {
+        state: 'indications',
+        short_label: 'M',
+        name: 'ข้อบ่งใช้',
+        type: 'link',
+        icon: 'feather icon-aperture'
+      },
+      {
+        state: 'interactions',
+        short_label: 'M',
+        name: 'อันตรกิริยาระหว่างยา',
+        type: 'link',
+        icon: 'feather icon-aperture'
+      },
+      {
+        state: 'mims',
+        short_label: 'M',
+        name: 'กลุ่มยาตาม MIMS Thailand',
+        type: 'link',
+        icon: 'feather icon-aperture'
+      },
+      {
+        state: 'presentation',
+        short_label: 'M',
+        name: 'ขนาดความแรง',
+        type: 'link',
+        icon: 'feather icon-aperture'
+      },
+      {
+        state: 'presentationPack',
+        short_label: 'M',
+        name: 'ขนาดความแรงต่อบรรจุภัณฑ์',
+        type: 'link',
+        icon: 'feather icon-aperture'
+      },
+      {
+        state: 'shape',
+        short_label: 'M',
+        name: 'รูปร่าง',
+        type: 'link',
+        icon: 'feather icon-aperture'
+      },
+      {
+        state: 'thaiFDA',
+        short_label: 'M',
+        name: 'Thailand FDA',
+        type: 'link',
+        icon: 'feather icon-aperture'
+      },
+      {
+        state: 'usFDA',
+        short_label: 'M',
+        name: 'US FDA',
+        type: 'link',
+        icon: 'feather icon-aperture'
+      },
+      {
+        state: 'warning',
+        short_label: 'M',
+        name: 'คำเตือน',
+        type: 'link',
+        icon: 'feather icon-aperture'
+      },
       {
         state: 'medicines',
         short_label: 'M',

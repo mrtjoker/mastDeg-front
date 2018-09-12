@@ -1,15 +1,15 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import { BasicDataComponent } from './basic-data.component';
+import { AboutComponent } from './about.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: BasicDataComponent,
+    component: AboutComponent,
     data: {
-      title: '',
+      title: 'คำอธิบาย',
       icon: 'icon-home',
-      caption: 'lorem ipsum dolor sit amet, consectetur adipisicing elit - ข้อมูลพื้นฐาน',
+      caption: 'lorem ipsum dolor sit amet, consectetur adipisicing elit - คำอธิบาย',
       status: true
     }
   }
@@ -19,4 +19,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class BasicDataRoutingModule { }
+export class AboutRoutingModule { }

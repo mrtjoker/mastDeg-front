@@ -1,0 +1,48 @@
+<div class="card">
+  <div class="md-tabs">
+    <ngb-tabset>
+      <ngb-tab title="ชื่อการค้า">
+        <ng-template ngbTabContent>
+          <div [@fadeInOutTranslate] class="m-t-15">
+            <app-brandName></app-brandName>
+          </div>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="ชื่อสามัญยา">
+        <ng-template ngbTabContent>
+          <div [@fadeInOutTranslate] class="m-t-15">
+            <app-genericName></app-genericName>
+          </div>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="MIMS">
+        <ng-template ngbTabContent>
+          <div [@fadeInOutTranslate] class="m-t-15">
+            <app-mims></app-mims>
+          </div>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="Thai FDA">
+        <ng-template ngbTabContent>
+          <div [@fadeInOutTranslate] class="m-t-15">
+            <app-thaiFDA></app-thaiFDA>
+          </div>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="US FDA">
+        <ng-template ngbTabContent>
+          <div [@fadeInOutTranslate] class="m-t-15">
+            <app-usFDA></app-usFDA>
+          </div>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="Factory">
+        <ng-template ngbTabContent>
+          <div [@fadeInOutTranslate] class="m-t-15">
+            <app-factory></app-factory>
+          </div>
+        </ng-template>
+      </ngb-tab>
+    </ngb-tabset>
+  </div>
+</div>

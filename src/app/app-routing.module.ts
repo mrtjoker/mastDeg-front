@@ -11,16 +11,40 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'dashboard/default',
+        redirectTo: 'basic-data',
         pathMatch: 'full'
       },
-      // {
-      //   path: 'basic-data',
-      //   loadChildren: './basic-data/basic-data.module#BasicDataModule'
-      // },
       {
-        path: 'all-basic-data',
-        loadChildren: './all-basic-data/all-basic-data.module#AllBasicDataModule'
+        path: 'basic-data',
+        loadChildren: './basic-data/basic-data.module#BasicDataModule'
+      },
+      {
+        path: 'feature',
+        loadChildren: './feature/feature.module#FeatureModule'
+      },
+      {
+        path: 'about',
+        loadChildren: './about/about.module#AboutModule'
+      },
+      {
+        path: 'informations-medicines',
+        loadChildren: './informations-medicines/informations-medicines.module#InformationsMedicinesModule'
+      },
+      {
+        path: 'volume',
+        loadChildren: './volume/volume.module#VolumeModule'
+      },
+      {
+        path: 'advice',
+        loadChildren: './advice/advice.module#AdviceModule'
+      },
+      {
+        path: 'mims',
+        loadChildren: './mims/mims.module#MimsModule'
+      },
+       {
+        path: 'dosage',
+        loadChildren: './dosage/dosage.module#DosageModule'
       },
       {
         path: 'medicines',
